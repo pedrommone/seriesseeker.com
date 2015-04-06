@@ -103,3 +103,22 @@ footer {
 	display: block;
 	margin: 3px;
 }
+
+#create-account-bar {
+
+	text-align: center;
+	height: 120px;
+}
+
+#create-account-bar form {
+
+	position: relative;
+	top: 25px;
+}
+
+#create-account-bar form > * { height: 45px; }
+
+#create-account-bar form input {
+	width: 25%;
+	display: inline-block;
+}

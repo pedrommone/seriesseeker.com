@@ -65,9 +65,9 @@
 
 		<section id="global-search" class="container">
 			
-			<form action="{{ url('/') }}" method="post">
+			<form action="{{ url('/') }}" method="post" autocomplete="off">
 				
-				<input class="form-control" type="text" id="title" name="title" placeholder="Avengers 2015">
+				<input class="form-control" type="text" id="title" name="title" autocomplete="off" placeholder="Avengers 2015">
 				<button class="btn btn-material-green" type="submit">Buscar</button>
 			</form>
 		</section>
@@ -97,7 +97,7 @@
 										<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
 									</div>
 								</div>
-								
+
 								<div class="list-group-separator"></div>
 							</div>
 						@endforeach
@@ -134,6 +134,16 @@
 			</div>
 		</section>
 
+		<section id="create-account-bar" class="container">
+			
+			<form action="{{ url('/') }}" method="post" autocomplete="off">
+				
+				<input class="form-control" type="email" id="email" name="email" autocomplete="off" placeholder="meuemail@provedor.com">
+				<input class="form-control" type="password" id="password" name="password" autocomplete="off" placeholder="M1nh4Senh4Segur4">
+				<button class="btn btn-material-green" type="submit">Criar minha conta</button>
+			</form>
+		</section>
+
 		<footer>
 			
 			<div class="container">
@@ -147,6 +157,14 @@
 							<li><a href="#">Contato</a></li>
 							<li><a href="#">Status</a></li>
 						</ul>
+					</div>
+				</div>
+
+				<div class="row">
+					
+					<div class="col-md-13 text-right">
+						
+						Último atualização às {{ date('d/m/y h:s:i') }}
 					</div>
 				</div>
 			</div>
