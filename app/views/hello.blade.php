@@ -135,7 +135,7 @@
 		</section>
 
 		<section id="create-account-bar" class="container">
-			
+
 			<form action="{{ url('/') }}" method="post" autocomplete="off">
 				
 				<input class="form-control" type="email" id="email" name="email" autocomplete="off" placeholder="meuemail@provedor.com">
