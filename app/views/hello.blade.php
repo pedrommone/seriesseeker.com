@@ -28,29 +28,32 @@
 
 	<body>
 
-		<section id="header" class="container">
-			
-			<div class="col-md-3">
-				
-				<picture>
+		<section id="header">
 
-					<img src="http://placehold.it/125x50" alt="SeriesSeeker">
-					<h1>SeriesSeeker</h1>
-				</picture>
-			</div>
+			<div class="navbar navbar-inverse">
 
-			<div class="col-md-9">
-				
-				<nav>
-				
-					<ul>
+				<div class="navbar-header">
 
-						<li><a href="" class="btn btn-flat btn-link">Entrar</a></li>
-						<li><a href="" class="btn btn-flat btn-link">Criar conta</a></li>
-						<li><a href="" class="btn btn-flat btn-link">Contato</a></li>
-						<li><a href="" class="btn btn-flat btn-link">Status</a></li>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+
+					<a class="navbar-brand" href="javascript:void(0)">SeriesSeeker</a>
+				</div>
+
+				<div class="navbar-collapse collapse navbar-inverse-collapse">
+
+					<ul class="nav navbar-nav">
+
+						<li class="active"><a href="javascript:void(0)">Home</a></li>
+						<li><a href="javascript:void(0)">Criar conta</a></li>
+						<li><a href="javascript:void(0)">Entrar</a></li>
+						<li><a href="javascript:void(0)">Status</a></li>
 					</ul>
-				</nav>
+				</div>
 			</div>
 		</section>
 
