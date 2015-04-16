@@ -2,7 +2,7 @@
 
 class Genre extends Eloquent {
 
-	protected $table = 'movies';
+	protected $table = 'genres';
 
 	public function movies() {
 
