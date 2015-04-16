@@ -39,8 +39,8 @@ class PopulateMovies extends Command {
 					$model->id = $movie["id"];
 				}
 
-				$model->backdrop_url = array_get($movie, "backdrop_path", "place-holder");
-				$model->poster_url = array_get($movie, "poster_path", "place-holder");
+				$model->backdrop_url = is_null($movie["backdrop_path"]) ? 'place-holder' : $movie["backdrop_path"];
+				$model->poster_url = is_null($movie["poster_path"]) ? 'place-holder' : $movie["poster_path"];
 				$model->imdb_id = $movie["imdb_id"];
 				$model->release_date = $movie["release_date"];
 				$model->runtime = $movie["runtime"];
