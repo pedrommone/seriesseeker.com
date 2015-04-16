@@ -16,6 +16,26 @@ class UpdateMovies extends Command {
 		// workaround, remove it!
 		Config::set('tmdb-package::tmdb.api_key', $_ENV['TMDB_API']);
 
-		var_dump( Tmdb::getMoviesApi()->getMovie( 300 ) );
+		$movie = TMDB::getMoviesApi()->getMovie(1);
+
+		return var_dump($genres);
+
+		foreach ($genres['genres'] as $genre)
+		{
+
+			$aux = Genre::find($genre['id']);
+
+			if ( ! $aux)
+			{
+
+				$aux = new Genre;
+				$aux->id = $genre['id'];
+			}
+
+			$aux->description = $genre['name'];
+			$aux->save();
+		}
+
+		$this->info('Saved ' . count($genres['genres']) . ' genres');
 	}
 }

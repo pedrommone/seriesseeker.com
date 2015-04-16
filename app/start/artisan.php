@@ -13,3 +13,4 @@
 
 Artisan::add(new UpdateMovies);
 Artisan::add(new UpdateGenres);
+Artisan::add(new PopulateMovies);
