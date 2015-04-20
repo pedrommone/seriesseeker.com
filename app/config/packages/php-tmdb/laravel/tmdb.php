@@ -23,7 +23,7 @@ return [
          * Cache
          */
         'cache' => [
-            'enabled' => true,
+            'enabled' => false,
             // Keep the path empty or remove it entirely to default to storage/tmdb
             'path' => storage_path('tmdb')
         ],
@@ -32,7 +32,7 @@ return [
          * Log
          */
         'log' => [
-            'enabled' => true,
+            'enabled' => false,
             // Keep the path empty or remove it entirely to default to storage/logs/tmdb.log
             'path' => storage_path('logs/tmdb.log')
         ]
