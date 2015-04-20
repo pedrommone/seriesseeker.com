@@ -16,7 +16,10 @@ class PopulateMovies extends Command {
 		// workaround, remove it!
 		Config::set('tmdb-package::tmdb.api_key', $_ENV['TMDB_API']);
 
-		$start = 0;
+		$last_movie = Movie::orderBy('id', 'DESC')
+			->first();
+
+		$start = $last_movie ? $last_movie->id : 0;
 
 		do
 		{
