@@ -83,54 +83,6 @@ class PopulateSeasons extends Command {
 
 				} while (true);
 
-				echo "aee";
-
-				return var_dump($show->name);
-
-				$show = TMDB::getTvApi()->getTvshow($start);
-
-				$this->info("Found show: " . $show["name"]);
-
-				$model = Show::find($show["id"]);
-
-				if ( ! $model )
-				{
-
-					$model = new Show;
-					$model->id = $show["id"];
-				}
-
-				$model->backdrop_url = is_null($show["backdrop_path"]) ? 'place-holder' : $show["backdrop_path"];
-				$model->first_air_date = $show["first_air_date"];
-				$model->homepage = is_null($show["homepage"]) ? 'n/a' : $show["homepage"];
-				$model->name = $show["name"];
-				$model->overview = $show["overview"];
-				$model->vote_average = $show["vote_average"];
-				$model->vote_count = $show["vote_count"];
-				
-				$model->save();
-
-				$genres = [];
-
-				$genres = [];
-
-				foreach ($show['genres'] as $genre)
-				{
-
-					$db_genre = Genre::find($genre['id']);
-
-					if ( ! $db_genre)
-					{
-
-						$db_genre = new Genre;
-						$db_genre->description = $genre["name"];
-						$db_genre->save();
-					}
-
-					$genres[] = $db_genre->id;
-				}
-
-				$model->genres()->sync($genres);
 			}
 			catch (Tmdb\Exception\TmdbApiException $e)
 			{
