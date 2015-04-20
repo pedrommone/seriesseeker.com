@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class FixTypoOnShows extends Migration {
+class FixTypoOnEpisodes extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,7 +13,7 @@ class FixTypoOnShows extends Migration {
 	public function up()
 	{
 		
-		Schema::table('shows', function($table) {
+		Schema::table('season_episodes', function($table) {
 
 			$table->dropColumn('vote_averange');
 			$table->double('vote_average');
