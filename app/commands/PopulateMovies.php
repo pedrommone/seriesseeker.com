@@ -55,7 +55,17 @@ class PopulateMovies extends Command {
 				foreach ($movie['genres'] as $genre)
 				{
 
-					$genres[] = $genre['id'];
+					$db_genre = Genre::find($genre['id']);
+
+					if ( ! $db_genre)
+					{
+
+						$db_genre = new Genre;
+						$db_genre->description = $genre["name"];
+						$db_genre->save();
+					}
+
+					$genres[] = $db_genre->id;
 				}
 
 				$model->genres()->sync($genres);
