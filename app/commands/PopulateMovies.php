@@ -46,7 +46,7 @@ class PopulateMovies extends Command {
 				$model->poster_url = is_null($movie["poster_path"]) ? 'place-holder' : $movie["poster_path"];
 				$model->imdb_id = $movie["imdb_id"];
 				$model->release_date = $movie["release_date"];
-				$model->runtime = $movie["runtime"];
+				$model->runtime = is_null($movie["runtime"]) ? 0 : $movie["runtime"];
 				$model->title = $movie["original_title"];
 				$model->vote_average = $movie["vote_average"];
 				$model->vote_count = $movie["vote_count"];
