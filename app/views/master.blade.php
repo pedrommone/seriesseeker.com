@@ -57,95 +57,13 @@
 			</div>
 		</section>
 
-		<section id="floating-covers">
-			
-			<ul>
-				@foreach(range(1, 30) as $row)
-					<li><img src="http://lorempixel.com/241/150/sports/{{ $row }}" alt="Placeholder"></li>
-				@endforeach
-			</ul>		
-		</section>
+		@include('partials.floating-covers')
 
-		<section id="global-search" class="container">
-			
-			<form action="{{ url('/') }}" method="post" autocomplete="off">
-				
-				<input class="form-control" type="text" id="title" name="title" autocomplete="off" placeholder="Avengers 2015">
-				<button class="btn btn-material-green" type="submit">Buscar</button>
-			</form>
-		</section>
+		@include('partials.global-search')
 
-		<section id="shows-statuses" class="container">
-			
-			<div class="row">
+		@include('partials.show-statuses')
 
-				<div class="col-md-6">
-					
-					<div class="well">
-
-						<h4>Próximos filmes</h4>
-
-						@foreach(range(1, 5) as $row)
-							<div class="list-group">
-
-								<div class="list-group-item">
-
-									<div class="row-picture">
-						            <img class="circle" src="http://lorempixel.com/56/56/people/{{ $row }}" alt="icon">
-						         </div>
-
-									<div class="row-content">
-										<div class="least-content">15m</div>
-										<h4 class="list-group-item-heading">Tile with a label</h4>
-										<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-									</div>
-								</div>
-
-								<div class="list-group-separator"></div>
-							</div>
-						@endforeach
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					
-					<div class="well">
-
-						<h4>Próximas series</h4>
-
-						@foreach(range(1, 5) as $row)
-							<div class="list-group">
-
-								<div class="list-group-item">
-
-									<div class="row-picture">
-						            <img class="circle" src="http://lorempixel.com/56/56/sports/{{ $row }}" alt="icon">
-						         </div>
-
-									<div class="row-content">
-										<div class="least-content">15m</div>
-										<h4 class="list-group-item-heading">Tile with a label</h4>
-										<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
-									</div>
-								</div>
-
-								<div class="list-group-separator"></div>
-							</div>
-						@endforeach
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="create-account-bar" class="container">
-
-			<form action="{{ url('/') }}" method="post" autocomplete="off">
-				
-				<input class="form-control" type="email" id="email" name="email" autocomplete="off" placeholder="meuemail@provedor.com">
-				<input class="form-control" type="password" id="password" name="password" autocomplete="off" placeholder="M1nh4Senh4Segur4">
-				<button class="btn btn-material-green" type="submit">Criar minha conta</button>
-			</form>
-		</section>
+		@include('partials.create-account-bar')
 
 		<footer>
 			
