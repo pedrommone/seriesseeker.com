@@ -1028,16 +1028,16 @@
         },
         {
             "name": "php-tmdb/laravel",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-tmdb/laravel.git",
-                "reference": "2a33e22bea2866e01d69c529da685dd9bcab1212"
+                "reference": "98cd2b1afaf500ae3b952d09b4bf9b751b346d43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-tmdb/laravel/zipball/2a33e22bea2866e01d69c529da685dd9bcab1212",
-                "reference": "2a33e22bea2866e01d69c529da685dd9bcab1212",
+                "url": "https://api.github.com/repos/php-tmdb/laravel/zipball/98cd2b1afaf500ae3b952d09b4bf9b751b346d43",
+                "reference": "98cd2b1afaf500ae3b952d09b4bf9b751b346d43",
                 "shasum": ""
             },
             "require": {
@@ -1070,7 +1070,7 @@
                 }
             ],
             "description": "Laravel Package for TMDB ( The Movie Database ) API. Provides easy access to the wtfzdotnet/php-tmdb-api library.",
-            "time": "2015-04-13 18:17:36"
+            "time": "2015-04-16 20:35:22"
         },
         {
             "name": "phpseclib/phpseclib",

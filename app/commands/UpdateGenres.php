@@ -12,9 +12,6 @@ class UpdateGenres extends Command {
 
 	public function fire()
 	{
-		
-		// workaround, remove it!
-		Config::set('tmdb-package::tmdb.api_key', $_ENV['TMDB_API']);
 
 		$genres = TMDB::getGenresApi()->getGenres();
 
