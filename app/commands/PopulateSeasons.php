@@ -1,5 +1,7 @@
 <?php
 
+ini_set('memory_limit', '512M');
+
 use Tmdb\Laravel\Facades\Tmdb;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
