@@ -61,8 +61,6 @@ class PopulateShows extends Command {
 					$genres[] = $db_genre->id;
 				}
 
-				unset($show);
-
 				$model->genres()->sync($genres);
 
 				$this->info("Populating show: " . $model->name);
@@ -104,8 +102,6 @@ class PopulateShows extends Command {
 
 						$model_season->save();
 
-						unset($model);
-
 						foreach ($season['episodes'] as $episode)
 						{
 
@@ -127,11 +123,8 @@ class PopulateShows extends Command {
 							$model_episode->vote_average = $episode["vote_average"];
 							$model_episode->vote_count = $episode["vote_count"];
 
-							$model_episode->save();
-							unset($model_episode);
-						}
-
-						unset($season);
+							$model_episode->save();							
+						}			
 
 					} while (true);
 
@@ -157,6 +150,11 @@ class PopulateShows extends Command {
 
 				$this->error("Error: " . $e->getMessage());
 			}
+
+			unset($show);
+			unset($model);
+			unset($season);
+			unset($model_episode);
 
 			usleep(500);
 		}
