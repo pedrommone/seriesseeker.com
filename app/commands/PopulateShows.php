@@ -51,7 +51,7 @@ class PopulateShows extends Command {
 
 				$genres = [];
 
-				foreach ($model['genres'] as $genre)
+				foreach ($show['genres'] as $genre)
 				{
 
 					$db_genre = Genre::firstOrCreate([
@@ -98,7 +98,7 @@ class PopulateShows extends Command {
 						$model_season->show_id = $model->id;
 						$model_season->season_number = $season["season_number"];
 						$model_season->air_date = $season["air_date"];
-						$model_season->poster_url = isset($season["poster_path"]) ? $season["poster_path"] : 'place-holder';
+						$model_season->poster_url = $season["poster_path"];
 
 						$model_season->save();
 
@@ -119,7 +119,7 @@ class PopulateShows extends Command {
 							$model_episode->air_date = $episode["air_date"];
 							$model_episode->name = $episode["name"];
 							$model_episode->overview = $episode["overview"];
-							$model_episode->still_url = isset($season["still_path"]) ? $season["still_path"] : 'place-holder';
+							$model_episode->still_url = $episode["still_path"];
 							$model_episode->vote_average = $episode["vote_average"];
 							$model_episode->vote_count = $episode["vote_count"];
 

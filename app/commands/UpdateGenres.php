@@ -21,8 +21,8 @@ class UpdateGenres extends Command {
 			foreach ($genres['genres'] as $genre)
 			{
 
-				$genre = Genre::firstOrCreate([
-					'description' => $genre['name']
+				$db_genre = Genre::firstOrCreate([
+						'description' => $genre['name']
 				]);
 			}
 		}
