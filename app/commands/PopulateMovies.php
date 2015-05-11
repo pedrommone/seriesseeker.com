@@ -39,11 +39,11 @@ class PopulateMovies extends Command {
 					$model->id = $movie["id"];
 				}
 
-				$model->backdrop_url = is_null($movie["backdrop_path"]) ? 'place-holder' : $movie["backdrop_path"];
-				$model->poster_url = is_null($movie["poster_path"]) ? 'place-holder' : $movie["poster_path"];
+				$model->backdrop_url = $movie["backdrop_path"];
+				$model->poster_url = $movie["poster_path"];
 				$model->imdb_id = $movie["imdb_id"];
 				$model->release_date = $movie["release_date"];
-				$model->runtime = is_null($movie["runtime"]) ? 0 : $movie["runtime"];
+				$model->runtime = $movie["runtime"];
 				$model->title = $movie["original_title"];
 				$model->vote_average = $movie["vote_average"];
 				$model->vote_count = $movie["vote_count"];
@@ -55,15 +55,9 @@ class PopulateMovies extends Command {
 				foreach ($movie['genres'] as $genre)
 				{
 
-					$db_genre = Genre::find($genre['id']);
-
-					if ( ! $db_genre)
-					{
-
-						$db_genre = new Genre;
-						$db_genre->description = $genre["name"];
-						$db_genre->save();
-					}
+					$db_genre = Genre::firstOrCreate([
+						'description' => $genre['name']
+					]);
 
 					$genres[] = $db_genre->id;
 				}

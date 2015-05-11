@@ -39,9 +39,9 @@ class PopulateShows extends Command {
 					$model->id = $show["id"];
 				}
 
-				$model->backdrop_url = is_null($show["backdrop_path"]) ? 'place-holder' : $show["backdrop_path"];
+				$model->backdrop_url = $show["backdrop_path"];
 				$model->first_air_date = $show["first_air_date"];
-				$model->homepage = is_null($show["homepage"]) ? 'n/a' : $show["homepage"];
+				$model->homepage = $show["homepage"];
 				$model->name = $show["name"];
 				$model->overview = $show["overview"];
 				$model->vote_average = $show["vote_average"];
@@ -51,25 +51,94 @@ class PopulateShows extends Command {
 
 				$genres = [];
 
-				$genres = [];
-
-				foreach ($show['genres'] as $genre)
+				foreach ($model['genres'] as $genre)
 				{
 
-					$db_genre = Genre::find($genre['id']);
-
-					if ( ! $db_genre)
-					{
-
-						$db_genre = new Genre;
-						$db_genre->description = $genre["name"];
-						$db_genre->save();
-					}
+					$db_genre = Genre::firstOrCreate([
+						'description' => $genre['name']
+					]);
 
 					$genres[] = $db_genre->id;
 				}
 
 				$model->genres()->sync($genres);
+
+				$this->info("Populating show: " . $model->name);
+
+				try
+				{
+
+					$season_counter = 0;
+					
+					do
+					{
+
+						$this->info("Trying ID: " . ++$season_counter);
+
+						try
+						{
+							
+							$season = TMDB::getTvSeasonApi()->getSeason($model->id, $season_counter);
+						}
+						catch (Tmdb\Exception\TmdbApiException $e)
+						{
+
+							break;
+						}
+
+						$model_season = ShowSeason::find($season["id"]);
+
+						if ( ! $model_season )
+						{
+
+							$model_season = new ShowSeason;
+							$model_season->id = $season["id"];
+						}
+
+						$model_season->show_id = $model->id;
+						$model_season->season_number = $season["season_number"];
+						$model_season->air_date = $season["air_date"];
+						$model_season->poster_url = isset($season["poster_path"]) ? $season["poster_path"] : 'place-holder';
+
+						$model_season->save();
+
+						foreach ($season['episodes'] as $episode)
+						{
+
+							$model_episode = SeasonEpisode::find($episode["id"]);
+
+							if ( ! $model_episode )
+							{
+
+								$model_episode = new SeasonEpisode;
+								$model_episode->id = $episode["id"];
+							}
+
+							$model_episode->show_season_id = $model_season->id;
+							$model_episode->episode_number = $episode["episode_number"];
+							$model_episode->air_date = $episode["air_date"];
+							$model_episode->name = $episode["name"];
+							$model_episode->overview = $episode["overview"];
+							$model_episode->still_url = isset($season["still_path"]) ? $season["still_path"] : 'place-holder';
+							$model_episode->vote_average = $episode["vote_average"];
+							$model_episode->vote_count = $episode["vote_count"];
+
+							$model_episode->save();
+						}
+
+					} while (true);
+
+				}
+				catch (Tmdb\Exception\TmdbApiException $e)
+				{
+
+					$this->info("ID not found: " . $e->getMessage());
+				}
+				catch (Exception $e)
+				{
+
+					$this->error("Error: " . $e->getMessage());
+				}
 			}
 			catch (Tmdb\Exception\TmdbApiException $e)
 			{

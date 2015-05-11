@@ -18,17 +18,13 @@ class UpdateGenres extends Command {
 		foreach ($genres['genres'] as $genre)
 		{
 
-			$aux = Genre::find($genre['id']);
-
-			if ( ! $aux)
+			foreach ($genres['genres'] as $genre)
 			{
 
-				$aux = new Genre;
-				$aux->id = $genre['id'];
+				$genre = Genre::firstOrCreate([
+					'description' => $genre['name']
+				]);
 			}
-
-			$aux->description = $genre['name'];
-			$aux->save();
 		}
 
 		$this->info('Saved ' . count($genres['genres']) . ' genres');

@@ -3,6 +3,7 @@
 class Genre extends Eloquent {
 
 	protected $table = 'genres';
+	protected $fillable = ['description'];
 
 	public function movies() {
 
