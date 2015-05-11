@@ -16,7 +16,7 @@ class PopulateShows extends Command {
 		$last_show = Show::orderBy('id', 'DESC')
 			->first();
 
-		$start = $last_show ? $last_show->id : 0;
+		$start = $last_show ? $last_show->id - 1 : 0;
 
 		do
 		{
@@ -61,6 +61,8 @@ class PopulateShows extends Command {
 					$genres[] = $db_genre->id;
 				}
 
+				unset($show);
+
 				$model->genres()->sync($genres);
 
 				$this->info("Populating show: " . $model->name);
@@ -102,6 +104,8 @@ class PopulateShows extends Command {
 
 						$model_season->save();
 
+						unset($model);
+
 						foreach ($season['episodes'] as $episode)
 						{
 
@@ -124,7 +128,10 @@ class PopulateShows extends Command {
 							$model_episode->vote_count = $episode["vote_count"];
 
 							$model_episode->save();
+							unset($model_episode);
 						}
+
+						unset($season);
 
 					} while (true);
 
