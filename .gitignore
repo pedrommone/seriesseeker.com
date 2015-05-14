@@ -9,3 +9,4 @@ Thumbs.db
 public/error_log
 error_log
 app/storage/tmdb
+.vagrant
