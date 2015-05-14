@@ -21,7 +21,7 @@
 				            			alt="{{ $movie->title }}">
 				            	@else
 						        	<img class="circle"
-						            	src="https://placeholde.it/75"
+						            	src="https://placehold.it/75"
 						            	alt="{{ $movie->name }}">
 				            	@endif
 							</div>
@@ -58,7 +58,7 @@
 						            	alt="{{ $episode->name }}">
 						        @else
 						        	<img class="circle"
-						            	src="https://placeholde.it/75"
+						            	src="https://placehold.it/75"
 						            	alt="{{ $episode->name }}">
 								@endif
 							</div>
