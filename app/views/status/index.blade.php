@@ -1,8 +1,6 @@
 @extends('master')
 
 @section('content')
-
-	@include('partials.floating-covers')
 	
 	@include('partials.global-search')
 
@@ -38,11 +36,22 @@
 						<small>Episódios</small>
 					</div>
 				</div>
-
-				<br>
-				<br>
-				<br>
 			</div>
 		</div>
+
+		<br>
+		<br>
+		<br>
+
+		<div class="row">
+			<div class="col-md-12 text-center">
+				
+				Todos os dados são coletados do <a href="themoviedb.org">themoviedb.org</a>, que é um grante parceiro.
+			</div>
+		</div>
+
+		<br>
+		<br>
+		<br>
 	</div>
 @stop
