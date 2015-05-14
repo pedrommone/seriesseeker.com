@@ -14,3 +14,4 @@
 Route::get('/', 'HomeController@getIndex');
 
 Route::controller('status', 'StatusController');
+Route::controller('users', 'UsersController');
