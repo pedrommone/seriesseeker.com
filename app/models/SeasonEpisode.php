@@ -16,7 +16,8 @@ class SeasonEpisode extends Eloquent {
 
 	public function scopeNext() {
 
-		return $this->where('air_date', '>', Carbon::now());
+		return $this->where('air_date', '>', Carbon::now())		
+			->orderBy('air_date', 'ASC');
 	}
 
 	public function getAirDateReadableAttribute() {

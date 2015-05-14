@@ -17,7 +17,8 @@ class Movie extends Eloquent {
 
 	public function scopeNext() {
 
-		return $this->where('release_date', '>', Carbon::now());
+		return $this->where('release_date', '>', Carbon::now())
+			->orderBy('release_date', 'ASC');
 	}
 
 	public function getReleaseDateReadableAttribute() {
