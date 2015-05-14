@@ -11,4 +11,6 @@
 |
 */
 
-Route::controller('/', 'HomeController');
+Route::get('/', 'HomeController@getIndex');
+
+Route::controller('status', 'StatusController');
