@@ -48,10 +48,7 @@
 
 					<ul class="nav navbar-nav">
 
-						<li class="active"><a href="javascript:void(0)">Home</a></li>
-						<li><a href="javascript:void(0)">Criar conta</a></li>
-						<li><a href="javascript:void(0)">Entrar</a></li>
-						<li><a href="javascript:void(0)">Status</a></li>
+						@include('partials.navigation')
 					</ul>
 				</div>
 			</div>
@@ -74,9 +71,8 @@
 					<div class="col-md-6 footer-navigation-links">
 						
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Contato</a></li>
-							<li><a href="#">Status</a></li>
+							
+							@include('partials.navigation')
 						</ul>
 					</div>
 				</div>
