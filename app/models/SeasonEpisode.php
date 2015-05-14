@@ -13,4 +13,15 @@ class SeasonEpisode extends Eloquent {
 
 		return $this->belongsTo('Season');
 	}
+
+	public function scopeNext() {
+
+		return $this->where('air_date', '>', Carbon::now());
+	}
+
+	public function getAirDateReadableAttribute() {
+
+		return Carbon::parse($this->air_date)
+			->diffForHumans();
+	}
 }

@@ -14,4 +14,15 @@ class Movie extends Eloquent {
 		return $this->belongsToMany('User')
 				->withPivot(['type']);
 	}
+
+	public function scopeNext() {
+
+		return $this->where('release_date', '>', Carbon::now());
+	}
+
+	public function getReleaseDateReadableAttribute() {
+
+		return Carbon::parse($this->release_date)
+			->diffForHumans();
+	}
 }

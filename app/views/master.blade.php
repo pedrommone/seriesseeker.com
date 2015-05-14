@@ -54,13 +54,7 @@
 			</div>
 		</section>
 
-		@include('partials.floating-covers')
-
-		@include('partials.global-search')
-
-		@include('partials.show-statuses')
-
-		@include('partials.create-account-bar')
+		@yield('content')
 
 		<footer>
 			

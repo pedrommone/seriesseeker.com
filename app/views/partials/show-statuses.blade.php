@@ -8,19 +8,28 @@
 
 				<h4>Próximos filmes</h4>
 
-				@foreach(range(1, 5) as $row)
+				@foreach($next_movies as $movie)
 					<div class="list-group">
 
 						<div class="list-group-item">
 
 							<div class="row-picture">
-				            <img class="circle" src="http://lorempixel.com/56/56/people/{{ $row }}" alt="icon">
-				         </div>
+
+								@if ($movie->poster_url)
+				            		<img class="circle"
+				            			src="https://image.tmdb.org/t/p/w185/{{ $movie->poster_url }}"
+				            			alt="{{ $movie->title }}">
+				            	@else
+						        	<img class="circle"
+						            	src="https://placeholde.it/75"
+						            	alt="{{ $episode->name }}">
+				            	@endif
+							</div>
 
 							<div class="row-content">
-								<div class="least-content">15m</div>
-								<h4 class="list-group-item-heading">Tile with a label</h4>
-								<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+								<div class="least-content">{{ $movie->release_date_readable }}</div>
+								<h4 class="list-group-item-heading">{{ $movie->title }}</h4>
+								<p class="list-group-item-text">{{ str_limit($movie->overview, 150, '...') }}</p>
 							</div>
 						</div>
 
@@ -34,21 +43,30 @@
 			
 			<div class="well">
 
-				<h4>Próximas series</h4>
+				<h4>Próximos episódios</h4>
 
-				@foreach(range(1, 5) as $row)
+				@foreach($next_episodes as $episode)
 					<div class="list-group">
 
 						<div class="list-group-item">
 
 							<div class="row-picture">
-				            <img class="circle" src="http://lorempixel.com/56/56/sports/{{ $row }}" alt="icon">
-				         </div>
+
+								@if ($episode->still_url)
+						            <img class="circle"
+						            	src="https://image.tmdb.org/t/p/w185/{{ $episode->still_url }}"
+						            	alt="{{ $episode->name }}">
+						        @else
+						        	<img class="circle"
+						            	src="https://placeholde.it/75"
+						            	alt="{{ $episode->name }}">
+								@endif
+							</div>
 
 							<div class="row-content">
-								<div class="least-content">15m</div>
-								<h4 class="list-group-item-heading">Tile with a label</h4>
-								<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+								<div class="least-content">{{ $episode->air_date_readable }}</div>
+								<h4 class="list-group-item-heading">{{ $episode->name }}</h4>
+								<p class="list-group-item-text">{{ str_limit($episode->overview, 150, '...') }}</p>
 							</div>
 						</div>
 
