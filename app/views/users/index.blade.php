@@ -12,21 +12,21 @@
 				
 				<div class="well">
 
-					<form class="form-horizontal">
+					<form class="form-horizontal" method="POST" action="{{ url('/users/auth') }}">
 						<fieldset>
 							<legend>Entrar</legend>
 
 							<div class="form-group">
 								<label for="email" class="col-lg-2 control-label">Email</label>
 								<div class="col-lg-10">
-									<input type="email" class="form-control" id="email" placeholder="Email">
+									<input type="email" class="form-control" name="email" id="email" placeholder="Email">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="password" class="col-lg-2 control-label">Senha</label>
 								<div class="col-lg-10">
-									<input type="password" class="form-control" id="password" placeholder="Senha">
+									<input type="password" class="form-control" name="password" id="password" placeholder="Senha">
 								</div>
 							</div>
 
@@ -44,28 +44,28 @@
 				
 				<div class="well">
 
-					<form class="form-horizontal">
+					<form class="form-horizontal" method="POST" action="{{ url('/users/store') }}">
 						<fieldset>
 							<legend>Criar conta</legend>
 
 							<div class="form-group">
 								<label for="name" class="col-lg-2 control-label">Nome</label>
 								<div class="col-lg-10">
-									<input type="name" class="form-control" id="name" placeholder="Nome">
+									<input type="name" class="form-control" name="name" id="name" placeholder="Nome">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="email" class="col-lg-2 control-label">Email</label>
 								<div class="col-lg-10">
-									<input type="email" class="form-control" id="email" placeholder="Email">
+									<input type="email" class="form-control" name="email" id="email" placeholder="Email">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="password" class="col-lg-2 control-label">Senha</label>
 								<div class="col-lg-10">
-									<input type="password" class="form-control" id="password" placeholder="Senha">
+									<input type="password" class="form-control" name="password" id="password" placeholder="Senha">
 								</div>
 							</div>
 

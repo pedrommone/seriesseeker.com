@@ -122,7 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Tmdb\Laravel\TmdbServiceProvider',
-
+		'Mrynk\L4Hashids\L4HashidsServiceProvider'
 	),
 
 	/*
@@ -189,6 +189,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Carbon'          => 'Carbon\Carbon'
+		'Carbon'          => 'Carbon\Carbon',
+		'Hashids' 			=> 'Hashids\Hashids'
 	),
 );

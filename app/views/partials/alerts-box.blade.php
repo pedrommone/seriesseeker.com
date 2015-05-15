@@ -1,4 +1,4 @@
-<section id="alerts-box">
+<section id="alerts-box" class="container">
 	@if (isset($errors))
 		@if ($errors->has())
 			<div class="alert alert-dismissable alert-danger">
