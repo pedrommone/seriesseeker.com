@@ -9,9 +9,10 @@
 				<h4>Próximos filmes</h4>
 
 				@foreach($next_movies as $movie)
+					
 					<div class="list-group">
 
-						<div class="list-group-item">
+						<a href="{{ url('movies/show/' . $movie->id) }}" class="list-group-item">
 
 							<div class="row-picture">
 
@@ -31,7 +32,7 @@
 								<h4 class="list-group-item-heading">{{ $movie->title }}</h4>
 								<p class="list-group-item-text">{{ str_limit($movie->overview, 150, '...') }}</p>
 							</div>
-						</div>
+						</a>
 
 						<div class="list-group-separator"></div>
 					</div>

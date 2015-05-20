@@ -13,7 +13,7 @@
 
 		<title>Acompanhe suas series facilmente - SeriesSeeker</title>
 
-		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+		<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/roboto.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/material.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/ripples.min.css') }}" rel="stylesheet">
@@ -32,6 +32,8 @@
 
 			<div class="navbar navbar-inverse">
 
+				<div class="container">
+					
 				<div class="navbar-header">
 
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -50,6 +52,7 @@
 
 						@include('partials.navigation')
 					</ul>
+				</div>
 				</div>
 			</div>
 		</section>
@@ -83,8 +86,8 @@
 			</div>
 		</footer>
 
-		<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
+		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 		<script src="{{ asset('js/ripples.min.js') }}"></script>
 		<script src="{{ asset('js/material.min.js') }}"></script>

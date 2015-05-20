@@ -23,7 +23,13 @@ class Movie extends Eloquent {
 
 	public function getReleaseDateReadableAttribute() {
 
-		return Carbon::parse($this->release_date)
+		return Carbon::parse($this->attributes['release_date'])
 			->diffForHumans();
+	}
+
+	public function getReleaseDateAttribute() {
+
+		return Carbon::parse($this->attributes['release_date'])
+			->format('d/m/Y');
 	}
 }

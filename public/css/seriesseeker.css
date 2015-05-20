@@ -105,3 +105,55 @@ footer {
 
 	margin-top: 30px;
 }
+
+#full-cover {
+
+	position: relative;
+	height: 200px;
+	width: 100%;
+	display: block;
+	overflow: hidden;
+}
+
+#full-cover > img {
+
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	height: 200px;
+	background: white;
+}
+
+#full-cover .container,
+#full-cover h3 {
+
+	position: relative;
+	z-index: 2;
+}
+
+
+#full-cover h3 {
+
+	font-size: 70px;
+	color: black;
+	text-align: left;
+	margin-left: 100px;
+	top: 50px;
+	line-height: 70px;
+}
+
+
+#movie {
+
+	padding: 30px;
+}
+
+#movie h3 {
+
+	font-size: 36px;
+}
+
+#movie .description {
+
+	padding-top: 20px;
+}

@@ -1,23 +1,26 @@
-<section id="alerts-box" class="container">
-	@if (isset($errors))
-		@if ($errors->has())
-			<div class="alert alert-dismissable alert-danger">
+@if (isset($erros) || Session::has('success'))
+
+	<section id="alerts-box" class="container">
+		@if (isset($errors))
+			@if ($errors->has())
+				<div class="alert alert-dismissable alert-danger">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					
+					@foreach ($errors->all() as $error)
+						{{ $error }}<br>
+					@endforeach
+				</div>
+			@endif
+		@endif
+
+		@if (Session::has('success'))
+			<div class="alert alert-dismissable alert-success">
 				<button type="button" class="close" data-dismiss="alert">×</button>
 				
-				@foreach ($errors->all() as $error)
-					{{ $error }}<br>
-				@endforeach
+				@foreach (Session::get('success')->all() as $bag)
+						{{ $bag }}<br>
+					@endforeach
 			</div>
 		@endif
-	@endif
-
-	@if (Session::has('success'))
-		<div class="alert alert-dismissable alert-success">
-			<button type="button" class="close" data-dismiss="alert">×</button>
-			
-			@foreach (Session::get('success')->all() as $bag)
-					{{ $bag }}<br>
-				@endforeach
-		</div>
-	@endif
-</section>
+	</section>
+@endif
