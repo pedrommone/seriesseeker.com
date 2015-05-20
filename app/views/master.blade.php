@@ -43,7 +43,7 @@
 						<span class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand" href="javascript:void(0)">SeriesSeeker</a>
+					<a class="navbar-brand" href="{{ url('/') }}">SeriesSeeker</a>
 				</div>
 
 				<div class="navbar-collapse collapse navbar-inverse-collapse">

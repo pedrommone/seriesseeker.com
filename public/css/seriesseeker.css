@@ -143,17 +143,28 @@ footer {
 }
 
 
-#movie {
+#movie { padding: 30px; }
+#movie h3 { font-size: 36px; }
 
-	padding: 30px;
+#movie .description,
+#movie .bottom-area { padding-top: 30px; }
+
+#star-rating {
+
+	position: relative;
+	display: block;
+	right: 0;
+	font-size: 30px;
+	width: 187px;
+	height: 40px;
+	overflow: hidden;
 }
 
-#movie h3 {
+#star-rating .yellow {
 
-	font-size: 36px;
+	color: #ffce00;
+	position: relative;
+	top: -42px;
 }
 
-#movie .description {
-
-	padding-top: 20px;
-}
+#star-rating .yellow > * { display: inline-block; }
