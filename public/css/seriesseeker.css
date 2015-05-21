@@ -55,13 +55,6 @@
 	padding-left: 12px;
 }
 
-footer {
-
-	height: 150px;
-	background-color: rgb(24, 24, 24);
-	padding: 30px 0 10px 0;
-}
-
 .footer-navigation-links ul {
 
 	list-style: none;
@@ -168,3 +161,11 @@ footer {
 }
 
 #star-rating .yellow > * { display: inline-block; }
+
+footer {
+
+	height: 110px; 
+	width: 100%;
+	background-color: rgb(24, 24, 24);
+	padding: 30px 0 10px 0;
+}

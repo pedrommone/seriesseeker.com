@@ -27,39 +27,39 @@
 	</head>
 
 	<body>
-
+				
 		<section id="header">
 
 			<div class="navbar navbar-inverse">
 
 				<div class="container">
 					
-				<div class="navbar-header">
+					<div class="navbar-header">
 
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
 
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
 
-					<a class="navbar-brand" href="{{ url('/') }}">SeriesSeeker</a>
-				</div>
+						<a class="navbar-brand" href="{{ url('/') }}">SeriesSeeker</a>
+					</div>
 
-				<div class="navbar-collapse collapse navbar-inverse-collapse">
+					<div class="navbar-collapse collapse navbar-inverse-collapse">
 
-					<ul class="nav navbar-nav">
+						<ul class="nav navbar-nav">
 
-						@include('partials.navigation')
-					</ul>
-				</div>
+							@include('partials.navigation')
+						</ul>
+					</div>
 				</div>
 			</div>
 		</section>
 
 		@include('partials.alerts-box')
 
-		@yield('content')
+		@yield('content')	
 
 		<footer>
 			
