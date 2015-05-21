@@ -88,14 +88,25 @@
 
 		<script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
 		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
+		<script src="{{ asset('js/jquery.autocomplete.min.js') }}"></script>
 		<script src="{{ asset('js/ripples.min.js') }}"></script>
 		<script src="{{ asset('js/material.min.js') }}"></script>
 
 		<script>
 			$(document).ready(function() {
-				// This command is used to initialize some elements and make them work properly
+
+				var BASE_URL = '{{ url("/") }}';
+
 				$.material.init();
+
+				$('#global-search input').autocomplete({
+
+					serviceUrl: BASE_URL + '/search/autocomplete',
+					groupBy: 'category',
+					onSelect: function (suggestion) {
+						console.log('You selected: ' + suggestion.value, suggestion.data);
+					}
+				});
 			});
 		</script>
 	</body>
