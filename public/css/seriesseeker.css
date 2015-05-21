@@ -180,6 +180,7 @@ footer {
 	border: 0;
 	font-family: RobotoDraft,Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
 	font-weight: 300;
+	overflow: auto;
 }
 
 .autocomplete-group {
