@@ -76,7 +76,7 @@ class PopulateMovies extends Command {
 				$this->error("Error: " . $e->getMessage());
 			}
 
-			usleep(500);
+			usleep(1000);
 		}
 		while (true);
 	}
