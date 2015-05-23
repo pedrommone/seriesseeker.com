@@ -130,17 +130,23 @@
 	font-size: 70px;
 	color: black;
 	text-align: left;
-	margin-left: 100px;
 	top: 50px;
 	line-height: 70px;
 }
 
 
-#movie { padding: 30px; }
-#movie h3 { font-size: 36px; }
+#movie,
+#season-episode { padding: 30px; }
 
+#movie h3,
+#season-episode h3 { font-size: 36px; }
+
+#season-episode .description,
+#season-episode .bottom-area,
 #movie .description,
 #movie .bottom-area { padding-top: 30px; }
+
+#season-episode .description ul { padding-top: 30px; }
 
 #star-rating {
 
@@ -206,3 +212,5 @@ footer {
 }
 
 .autocomplete-selected { background: #F0F0F0; }
+
+#tree-list ul li ul { padding-left: 23px; }
