@@ -1,20 +1,23 @@
-<div id="star-rating" class="pull-right">
+@if ($star_pc > 0)
+	
+	<div id="star-rating" class="pull-right">
 
-	<div class="background">
+		<div class="background">
 
-		<span class="glyphicon glyphicon-star"></span>
-		<span class="glyphicon glyphicon-star"></span>
-		<span class="glyphicon glyphicon-star"></span>
-		<span class="glyphicon glyphicon-star"></span>
-		<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+		</div>
+
+		<div class="yellow" style="width: {{ $star_pc }}%;">
+			
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<span class="glyphicon glyphicon-star"></span>
+		</div>
 	</div>
-
-	<div class="yellow" style="width: {{ $star_pc }}%;">
-		
-		<span class="glyphicon glyphicon-star"></span>
-		<span class="glyphicon glyphicon-star"></span>
-		<span class="glyphicon glyphicon-star"></span>
-		<span class="glyphicon glyphicon-star"></span>
-		<span class="glyphicon glyphicon-star"></span>
-	</div>
-</div>
+@endif
