@@ -18,3 +18,4 @@ Route::controller('users', 'UsersController');
 Route::controller('movies', 'MoviesController');
 Route::controller('search', 'SearchController');
 Route::controller('season-episodes', 'SeasonEpisodesController');
+Route::controller('seasons', 'SeasonsController');

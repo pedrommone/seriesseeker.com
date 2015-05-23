@@ -111,6 +111,36 @@
 					}
 				});
 
+				var seasonIsFullyWatched = function(season_id) {
+
+					var episodes = $('#tree-list .is-episode[data-target-season="' + season_id + '"]');
+					var episodesWatched = $('#tree-list .is-episode[data-target-season="' + season_id + '"]:checked');
+
+					var totalOfEpisodes = episodes.length;
+					var totalOfWatchedEpisodes = episodesWatched.length;
+
+					return totalOfEpisodes == totalOfWatchedEpisodes;
+				}
+
+				var checkForFullSeason = function() {
+
+					var season = $('#tree-list .is-season');
+
+					$.each(season, function(k, v) {
+
+						var season = $(v);
+
+						if (seasonIsFullyWatched(season.data('target-season')))
+						{
+
+							$('#tree-list .is-season[data-target-season="' + season.data('target-season') + '"]')
+								.prop('checked', 'checked');
+						}
+					});
+				}
+
+				checkForFullSeason();
+
 				$('#tree-list .is-season').on('click', function() {
 
 					if ( ! IS_LOGGED_IN)
@@ -129,12 +159,24 @@
 					if (checked)
 					{
 
-						$.snackbar({content: "Todos os episódios marcados como assistido"});
+						$.ajax({
+							
+							url: BASE_URL + '/seasons/mark-as-watched/' + $(this).data('target-season'),
+						}).done(function() {
+
+							$.snackbar({content: "Todos os episódios marcados como assistidos"});
+						});
 					}
 					else
 					{
 
-						$.snackbar({content: "Todos os episódios marcados como não assistido"});	
+						$.ajax({
+							
+							url: BASE_URL + '/seasons/mark-as-unwatched/' + $(this).data('target-season'),
+						}).done(function() {
+
+							$.snackbar({content: "Todos os episódios marcados como não assistidos"});
+						});
 					}
 				});
 
@@ -160,7 +202,6 @@
 
 							$.snackbar({content: "Episódio marcado como assistido"});
 						});
-
 					}
 					else
 					{
@@ -172,6 +213,13 @@
 
 							$.snackbar({content: "Episódio marcado como não assistido"});
 						});
+					}
+
+					if (seasonIsFullyWatched($(this).data('target-season')))
+					{
+
+						$('#tree-list .is-season[data-target-season="' + $(this).data('target-season') + '"]')
+							.prop('checked', 'checked');
 					}
 				});
 			});
