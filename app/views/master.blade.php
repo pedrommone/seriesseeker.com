@@ -18,6 +18,7 @@
 		<link href="{{ asset('css/material.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/ripples.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/seriesseeker.css') }}" rel="stylesheet">
+		<link href="{{ asset('css/snackbar.css') }}" rel="stylesheet">
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -91,11 +92,13 @@
 		<script src="{{ asset('js/jquery.autocomplete.min.js') }}"></script>
 		<script src="{{ asset('js/ripples.min.js') }}"></script>
 		<script src="{{ asset('js/material.min.js') }}"></script>
+		<script src="{{ asset('js/snackbar.min.js') }}"></script>
 
 		<script>
 			$(document).ready(function() {
 
 				var BASE_URL = '{{ url("/") }}';
+				var IS_LOGGED_IN = {{ Auth::check() ? 'true' : 'false' }};
 
 				$.material.init();
 
@@ -105,6 +108,70 @@
 					groupBy: 'category',
 					onSelect: function (suggestion) {
 						console.log('You selected: ' + suggestion.value, suggestion.data);
+					}
+				});
+
+				$('#tree-list .is-season').on('click', function() {
+
+					if ( ! IS_LOGGED_IN)
+					{
+
+						$.snackbar({content: "É preciso entrar para controlar esse função"});
+
+						return;
+					}
+
+					var checked = $(this).is(':checked');
+					
+					$('#tree-list .episodes[data-season="' + $(this).data('target-season') + '"] .is-episode')
+						.prop('checked', checked);
+
+					if (checked)
+					{
+
+						$.snackbar({content: "Todos os episódios marcados como assistido"});
+					}
+					else
+					{
+
+						$.snackbar({content: "Todos os episódios marcados como não assistido"});	
+					}
+				});
+
+				$('#tree-list .is-episode').on('click', function() {
+
+					if ( ! IS_LOGGED_IN)
+					{
+
+						$.snackbar({content: "É preciso entrar para controlar esse função"});
+
+						return;
+					}
+
+					var checked = $(this).is(':checked');
+
+					if (checked)
+					{
+
+						$.ajax({
+							
+							url: BASE_URL + '/season-episodes/mark-as-watched/' + $(this).data('target-episode'),
+						}).done(function() {
+
+							$.snackbar({content: "Episódio marcado como assistido"});
+						});
+
+					}
+					else
+					{
+
+						$.ajax({
+							
+							url: BASE_URL + '/season-episodes/mark-as-unwatched/' + $(this).data('target-episode'),
+						}).done(function() {
+
+							$.snackbar({content: "Episódio marcado como não assistido"});
+						});
 					}
 				});
 			});

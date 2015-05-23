@@ -18,8 +18,8 @@
 				<button type="button" class="close" data-dismiss="alert">×</button>
 				
 				@foreach (Session::get('success')->all() as $bag)
-						{{ $bag }}<br>
-					@endforeach
+					{{ $bag }}<br>
+				@endforeach
 			</div>
 		@endif
 	</section>

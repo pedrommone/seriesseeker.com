@@ -47,9 +47,10 @@
 				<h4>Próximos episódios</h4>
 
 				@foreach($next_episodes as $episode)
+
 					<div class="list-group">
 
-						<div class="list-group-item">
+						<a href="{{ url('season-episodes/show/' . $episode->id) }}" class="list-group-item">
 
 							<div class="row-picture">
 
@@ -69,7 +70,7 @@
 								<h4 class="list-group-item-heading">{{ $episode->name }}</h4>
 								<p class="list-group-item-text">{{ str_limit($episode->overview, 150, '...') }}</p>
 							</div>
-						</div>
+						</a>
 
 						<div class="list-group-separator"></div>
 					</div>
