@@ -18,4 +18,9 @@ class Show extends Eloquent {
 
 		return $this->hasMany('ShowSeason');
 	}
+
+	public function episodes() {
+
+		return $this->hasManyThrough('SeasonEpisode', 'ShowSeason', 'show_id', 'show_season_id');
+	}
 }
