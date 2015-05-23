@@ -58,8 +58,6 @@
 			</div>
 		</section>
 
-		@include('partials.alerts-box')
-
 		@yield('content')	
 
 		<footer>

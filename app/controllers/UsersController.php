@@ -209,8 +209,6 @@ class UsersController extends BaseController {
 		$user_id = (new Hashids())->decode($hash);
 		$user = User::findOrFail($user_id);
 
-		return var_dump($user->verfied_at);
-
 		if ( ! isset($user->verfied_at))
 		{
 

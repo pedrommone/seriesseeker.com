@@ -4,6 +4,8 @@
 	
 	@include('partials.global-search')
 
+	@include('partials.alerts-box')
+
 	<div class="container">
 
 		<div class="row">

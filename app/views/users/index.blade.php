@@ -3,6 +3,8 @@
 @section('content')
 	
 	@include('partials.global-search')
+
+	@include('partials.alerts-box')
 	
 	<section id="shows-statuses" class="container">
 				

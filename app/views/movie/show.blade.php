@@ -8,6 +8,8 @@
 		'url' => ''
 	])
 
+	@include('partials.alerts-box')
+
 	<section class="container" id="movie">
 		
 		<div class="row">

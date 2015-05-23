@@ -1,4 +1,4 @@
-@if (isset($erros) || Session::has('success'))
+@if (isset($errors) || Session::has('success'))
 
 	<section id="alerts-box" class="container">
 		@if (isset($errors))
