@@ -11,6 +11,11 @@ class ShowSeason extends Eloquent {
 
 	public function episodes() {
 
-		return $this->hasMany('SeasonEpidose');
+		return $this->hasMany('SeasonEpisode');
+	}
+
+	public function getSeasonNumberAttribute() {
+
+		return str_pad($this->attributes['season_number'], 2, '0', STR_PAD_LEFT);
 	}
 }
