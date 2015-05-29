@@ -36,6 +36,16 @@ class SeasonEpisodesController extends BaseController {
 	public function getMarkAsWatched($id)
 	{
 
+		if ( ! Auth::check())
+		{
+
+			$bag = new \Illuminate\Support\MessageBag;
+			$bag->add('error', 'É preciso estar logado para executar essa ação.');
+
+			return Redirect::back()
+				->withErrors($bag);
+		}
+
 		$episode = SeasonEpisode::findOrFail($id);
 
 		$episode->users()->attach(Auth::user(), [
@@ -61,6 +71,16 @@ class SeasonEpisodesController extends BaseController {
 
 	public function getMarkAsUnwatched($id)
 	{
+
+		if ( ! Auth::check())
+		{
+
+			$bag = new \Illuminate\Support\MessageBag;
+			$bag->add('error', 'É preciso estar logado para executar essa ação.');
+
+			return Redirect::back()
+				->withErrors($bag);
+		}
 
 		$episode = SeasonEpisode::findOrFail($id);
 
