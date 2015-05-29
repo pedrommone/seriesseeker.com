@@ -2,7 +2,7 @@
 			
 	<ul>
 		@foreach(range(1, 30) as $row)
-			<li><img src="http://lorempixel.com/241/150/sports/{{ $row }}" alt="Placeholder"></li>
+			<li><img src="" alt="Placeholder"></li>
 		@endforeach
 	</ul>		
 </section>
