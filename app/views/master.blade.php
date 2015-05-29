@@ -145,6 +145,7 @@
 					{
 
 						$.snackbar({content: "É preciso entrar para controlar esse função"});
+						$(this).prop('checked', false);
 
 						return;
 					}
@@ -184,6 +185,7 @@
 					{
 
 						$.snackbar({content: "É preciso entrar para controlar esse função"});
+						$(this).prop('checked', false);
 
 						return;
 					}
