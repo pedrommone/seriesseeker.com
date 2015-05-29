@@ -4,6 +4,8 @@ class Movie extends Eloquent {
 
 	protected $table = 'movies';
 
+	protected $appends = ['release_date', 'release_date_readble', 'already_released'];
+
 	public function genres() {
 
 		return $this->belongsToMany('Genre');
@@ -31,5 +33,10 @@ class Movie extends Eloquent {
 
 		return Carbon::parse($this->attributes['release_date'])
 			->format('d/m/Y');
+	}
+
+	public function getAlreadyReleasedAttribute() {
+
+		return Carbon::now() > Carbon::parse($this->attributes['release_date']);
 	}
 }

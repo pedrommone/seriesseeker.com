@@ -51,10 +51,14 @@
 			<div class="col-md-12 text-right">
 				
 				@if ($movie->imdb_id)
-					<a class="btn" href="http://www.imdb.com/title/{{ $movie->imdb_id }}" target="_blank">Acessar IMDB do filme</a>
+					<a class="btn" href="http://www.imdb.com/title/{{ $movie->imdb_id }}" target="_blank">Ver no IMDB</a>
 				@endif
 				
-				<a class="btn btn-success" href="">Marcar como assistido</a>
+				@if ($movie->already_released)
+					<a class="btn btn-success" href="">Marcar como assistido</a>
+				@else
+					<a class="btn btn-info" href="">Me avise quando estreiar</a>
+				@endif
 			</div>
 		</div>
 	</section>
