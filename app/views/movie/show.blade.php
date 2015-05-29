@@ -45,19 +45,53 @@
 				</ul>
 			</div>
 		</div>
-
+		
 		<div class="row bottom-area">
 			
 			<div class="col-md-12 text-right">
 				
 				@if ($movie->imdb_id)
-					<a class="btn" href="http://www.imdb.com/title/{{ $movie->imdb_id }}" target="_blank">Ver no IMDB</a>
+
+					<a class="btn" href="http://www.imdb.com/title/{{ $movie->imdb_id }}/" target="_blank">Ver no IMDB</a>
 				@endif
-				
+
 				@if ($movie->already_released)
-					<a class="btn btn-success" href="">Marcar como assistido</a>
+
+					@if (in_array($movie->id, array_keys($has_relationship)))
+
+						@if ($has_relationship[$movie->id] == "W")
+
+							<a
+								class="btn btn-warning"
+								href="{{ url('movies/follow/' . $movie->id) }}">Somente seguir</a>
+						@else
+
+							<a
+								class="btn btn-success"
+								href="{{ url('movies/mark-as-watched/' . $movie->id) }}">Marcar como assistido</a>
+
+							@if ($has_relationship[$movie->id] != "F")
+								
+								<a 
+									class="btn btn-primary"
+									href="{{ url('movies/follow/' . $movie->id) }}">Me avise quando estreiar</a>
+							@endif
+						@endif
+					@else
+
+						<a
+							class="btn btn-success"
+							href="{{ url('movies/mark-as-watched/' . $movie->id) }}">Marcar como assistido</a>
+
+						<a
+							class="btn btn-warning"
+							href="{{ url('movies/follow/' . $movie->id) }}">Seguir</a>
+					@endif
 				@else
-					<a class="btn btn-info" href="">Me avise quando estreiar</a>
+
+					<a
+						class="btn btn-warning"
+						href="{{ url('movies/follow/' . $movie->id) }}">Me avise quando estreiar</a>
 				@endif
 			</div>
 		</div>

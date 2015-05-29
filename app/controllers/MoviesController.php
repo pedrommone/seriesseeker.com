@@ -7,8 +7,98 @@ class MoviesController extends BaseController {
 
 		$movie = Movie::findOrFail($id);
 
+		if (Auth::check())
+		{
+
+			$has_relationship = User::findOrFail(Auth::user()->id)
+				->with('movies')
+				->first()
+				->movies()
+				->lists('type', 'id');
+		}
+		else
+		{
+
+			$has_relationship = false;
+		}
+
 		return View::make('movie.show')->with([
-			'movie' => $movie
+			'movie' => $movie,
+			'has_relationship' => $has_relationship
 		]);
+	}
+
+	public function getMarkAsWatched($id)
+	{
+
+		if ( ! Auth::check())
+		{
+
+			$bag = new \Illuminate\Support\MessageBag;
+			$bag->add('error', 'É preciso estar logado para executar essa ação.');
+
+			return Redirect::back()
+				->withErrors($bag);
+		}
+
+		$movie = Movie::findOrFail($id);
+
+		$movie->users()->attach(Auth::user(), [
+			'added_on' => Carbon::now(),
+			'type' => 'W'
+		]);
+
+		if (Request::ajax())
+		{
+		
+			return Response::json([
+				'message' => 'success'
+			], 200);
+		}
+		else
+		{
+			$bag = new \Illuminate\Support\MessageBag;	
+			$bag->add('success', 'Marcado como assistido com sucesso!');
+
+			return Redirect::back()
+				->with('success', $bag);
+		}
+	}
+
+	public function getFollow($id)
+	{
+
+		if ( ! Auth::check())
+		{
+
+			$bag = new \Illuminate\Support\MessageBag;
+			$bag->add('error', 'É preciso estar logado para executar essa ação.');
+
+			return Redirect::back()
+				->withErrors($bag);
+		}
+
+		$movie = Movie::findOrFail($id);
+
+		$movie->users()->attach(Auth::user(), [
+			'added_on' => Carbon::now(),
+			'type' => 'F'
+		]);
+
+		if (Request::ajax())
+		{
+		
+			return Response::json([
+				'message' => 'success'
+			], 200);
+		}
+		else
+		{
+			$bag = new \Illuminate\Support\MessageBag;	
+			$bag->add('success', 'Filme está sendo seguido agora!');
+
+			return Redirect::back()
+				->with('success', $bag);
+		}
 	}
 }
