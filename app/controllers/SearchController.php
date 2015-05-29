@@ -11,53 +11,26 @@ class SearchController extends BaseController {
 
 		$query = Input::get('query');
 
-		$shows = Show::where('name', 'LIKE', '%' . $query . '%')
-			->get()
-			->take(5);
+		$results = DB::select(DB::raw(
+			"(SELECT title as title, id as id, 'Filmes' as category, 'movies' as route " . 
+				"FROM movies WHERE title LIKE '%$query%' LIMIT 5)" .
+			"UNION ALL" .
+			"(SELECT name as title, id as id, 'Séries' as category, 'shows' as route " . 
+				"FROM shows WHERE name LIKE '%$query%' LIMIT 5)" .
+			"UNION ALL" .
+			"(SELECT name as title, id as id, 'Episódios' as category, 'season-eapisodes' as route " . 
+				"FROM season_episodes WHERE name LIKE '%$query%' LIMIT 5)"
+		));
 
-		foreach ($shows as $show)
+		foreach ($results as $result)
 		{
 		
 			$response[] = [
-				'value' => $show->name,
+				'value' => $result->title,
 				'data' => [
-					'category' => 'Séries',
-					'route' => 'shows',
-					'id' => $show->id
-				]
-			];
-		}
-
-		$seasons = SeasonEpisode::where('name', 'LIKE', '%' . $query . '%')
-			->get()
-			->take(5);
-
-		foreach ($seasons as $season)
-		{
-		
-			$response[] = [
-				'value' => $season->name,
-				'data' => [
-					'category' => 'Episódios',
-					'route' => 'season-episodes',
-					'id' => $season->id
-				]
-			];
-		}
-
-		$movies = Movie::where('title', 'LIKE', '%' . $query . '%')
-			->get()
-			->take(5);
-
-		foreach ($movies as $movie)
-		{
-		
-			$response[] = [
-				'value' => $movie->title,
-				'data' => [
-					'category' => 'Filmes',
-					'route' => 'movies',
-					'id' => $movie->id
+					'category' => $result->category,
+					'route' => $result->route,
+					'id' => $result->id
 				]
 			];
 		}
@@ -65,5 +38,6 @@ class SearchController extends BaseController {
 		return Response::json([
 			'suggestions' => $response
 		]);
+
 	}
 }
