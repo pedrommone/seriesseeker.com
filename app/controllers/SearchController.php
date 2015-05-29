@@ -2,6 +2,33 @@
 
 class SearchController extends BaseController {
 
+	public function getIndex()
+	{
+
+		if ( ! Input::has('keyword'))
+
+			App::abort(404);
+
+		$keyword = Input::get('keyword');
+
+		$results = DB::select(DB::raw(
+			"(SELECT title as title, id, 'Filmes' as category, 'movies' as route, overview " . 
+				"FROM movies WHERE title LIKE '%$keyword%')" .
+			"UNION ALL" .
+			"(SELECT name as title, id, 'Séries' as category, 'shows' as route, overview " . 
+				"FROM shows WHERE name LIKE '%$keyword%')" .
+			"UNION ALL" .
+			"(SELECT name as title, id, 'Episódios' as category, 'season-eapisodes' as route, overview " . 
+				"FROM season_episodes WHERE name LIKE '%$keyword%')"
+		));
+
+		return View::make('search.view', [
+
+			'results' => $results,
+			'keyword' => $keyword
+		]);
+	}
+
 	public function anyAutocomplete()
 	{
 
