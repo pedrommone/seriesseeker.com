@@ -19,7 +19,7 @@ class MoviesController extends BaseController {
 		else
 		{
 
-			$has_relationship = false;
+			$has_relationship = [];
 		}
 
 		return View::make('movie.show')->with([
