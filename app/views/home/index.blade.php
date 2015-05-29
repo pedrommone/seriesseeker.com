@@ -2,8 +2,6 @@
 
 @section('content')
 
-	@include('partials.floating-covers')
-
 	@include('partials.alerts-box')
 	
 	@include('partials.global-search')

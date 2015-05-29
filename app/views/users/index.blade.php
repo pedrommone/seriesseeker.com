@@ -21,14 +21,14 @@
 							<div class="form-group">
 								<label for="email" class="col-lg-2 control-label">Email</label>
 								<div class="col-lg-10">
-									<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+									<input type="email" class="form-control" name="email" id="email" placeholder="Email" autocomplete="off">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="password" class="col-lg-2 control-label">Senha</label>
 								<div class="col-lg-10">
-									<input type="password" class="form-control" name="password" id="password" placeholder="Senha">
+									<input type="password" class="form-control" name="password" id="password" placeholder="Senha" autocomplete="off">
 								</div>
 							</div>
 
@@ -50,28 +50,48 @@
 						<fieldset>
 							<legend>Criar conta</legend>
 
-							<div class="form-group">
+							<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 								<label for="name" class="col-lg-2 control-label">Nome</label>
 								<div class="col-lg-10">
-									<input type="name" class="form-control" name="name" id="name" placeholder="Nome">
+									<input
+										type="name"
+										class="form-control"
+										name="name"
+										id="name"
+										placeholder="Nome"
+										value="{{ Input::old('name') }}"
+										autocomplete="off">
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 								<label for="email" class="col-lg-2 control-label">Email</label>
 								<div class="col-lg-10">
-									<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+									<input
+										type="email"
+										class="form-control"
+										name="email"
+										id="email"
+										placeholder="Email"
+										value="{{ Input::old('email') }}"
+										autocomplete="off">
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 								<label for="password" class="col-lg-2 control-label">Senha</label>
 								<div class="col-lg-10">
-									<input type="password" class="form-control" name="password" id="password" placeholder="Senha">
+									<input
+										type="password"
+										class="form-control"
+										name="password"
+										id="password"
+										placeholder="Senha"
+										autocomplete="off">
 								</div>
 							</div>
 
-							<div class="form-group">
+							<div class="form-group{{ $errors->has('timezone') ? ' has-error' : '' }}">
 								<label for="timezone" class="col-lg-2 control-label">Fuso horário</label>
 								<div class="col-lg-10">
 									{{ Form::select('timezone', $timezones, null, ['class' => 'form-control']); }}

@@ -230,7 +230,7 @@ class UsersController extends BaseController {
 		if ($validator->fails())
 		{
 
-			return Redirect::back()
+			return Redirect::to('/users')
 				->withInput()
 				->withErrors($validator);
 		}
