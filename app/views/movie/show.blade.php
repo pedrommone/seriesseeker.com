@@ -21,10 +21,13 @@
 
 			<div class="col-md-5 col-md-offset-1">
 				
-				@include('partials.stars', [
+				@if ($movie->already_released)
 
-					'star_pc' => $movie->vote_average * 10,
-				])
+					@include('partials.stars', [
+
+						'star_pc' => $movie->vote_average * 10,
+					])
+				@endif
 			</div>
 		</div>
 
@@ -40,8 +43,12 @@
 				<ul class="list-unstyled">
 				<li><b>Dia de estreia:</b> {{ $movie->release_date or 'Não encontrado' }}</li>
 					<li><b>Tempo de duração:</b> {{ $movie->runtime or '0'}} minutos</li>
-					<li><b>Quantidade de votos:</b> {{ $movie->vote_count or '0' }}</li>
-					<li><b>Média dos votos:</b> {{ $movie->vote_average or '0' }}</li>
+
+					@if ($movie->already_released)
+					
+						<li><b>Quantidade de votos:</b> {{ $movie->vote_count or '0' }}</li>
+						<li><b>Média dos votos:</b> {{ $movie->vote_average or '0' }}</li>
+					@endif
 				</ul>
 			</div>
 		</div>
