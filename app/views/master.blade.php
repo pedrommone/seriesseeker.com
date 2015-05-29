@@ -105,7 +105,8 @@
 					serviceUrl: BASE_URL + '/search/autocomplete',
 					groupBy: 'category',
 					onSelect: function (suggestion) {
-						console.log('You selected: ' + suggestion.value, suggestion.data);
+
+						window.location.href = BASE_URL + '/' + suggestion.data.route + '/show/' + suggestion.data.id;
 					}
 				});
 
