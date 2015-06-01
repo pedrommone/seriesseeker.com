@@ -6,10 +6,14 @@ class SearchController extends BaseController {
 	{
 
 		if ( ! Input::has('keyword'))
+		{
 
-			App::abort(404);
+			$bag = new \Illuminate\Support\MessageBag;
+			$bag->add('error', 'Impossível buscar o vazio.');
 
-		$keyword = Input::get('keyword');
+			return Redirect::back()
+				->withErrors($bag);
+		}
 
 		$results = DB::select(DB::raw(
 			"(SELECT title as title, id, 'Filmes' as category, 'movies' as route, overview " . 
@@ -33,10 +37,18 @@ class SearchController extends BaseController {
 	{
 
 		if ( ! Input::has('query'))
+		{
 
 			App::abort(404);
+		}
 
 		$query = Input::get('query');
+		
+		if (is_null($keyword))
+		{
+
+			App::abort(400);
+		}
 
 		$results = DB::select(DB::raw(
 			"(SELECT title as title, id as id, 'Filmes' as category, 'movies' as route " . 

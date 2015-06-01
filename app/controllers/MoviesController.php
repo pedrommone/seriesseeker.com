@@ -22,7 +22,7 @@ class MoviesController extends BaseController {
 			$has_relationship = [];
 		}
 
-		return View::make('movie.show')->with([
+		return View::make('movies.show')->with([
 			'movie' => $movie,
 			'has_relationship' => $has_relationship
 		]);
