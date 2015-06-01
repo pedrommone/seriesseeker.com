@@ -49,6 +49,8 @@ class SearchController extends BaseController {
 				"FROM season_episodes WHERE name LIKE '%$query%' LIMIT 5)"
 		));
 
+		$response = [];
+
 		foreach ($results as $result)
 		{
 		
