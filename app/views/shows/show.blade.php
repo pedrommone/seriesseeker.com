@@ -5,7 +5,7 @@
 	@include('partials.full-cover', [
 
 		'title' => $show->name,
-		'url' => ''
+		'url' => 'https://image.tmdb.org/t/p/original/' . $show->backdrop_url
 	])
 
 	@include('partials.alerts-box')

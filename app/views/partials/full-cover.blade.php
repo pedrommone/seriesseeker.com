@@ -1,6 +1,12 @@
 <section id="full-cover">
 
-	<img src="{{ $url }}" alt="{{ $title }}">
+	@if (is_null($url))
+	
+		<img src="http://placehold.it/2048" alt="{{ $title }}">
+	@else
+
+		<img src="{{ $url }}" alt="{{ $title }}">
+	@endif
 
 	<div class="container">
 		

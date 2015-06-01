@@ -44,12 +44,6 @@ class SearchController extends BaseController {
 
 		$query = Input::get('query');
 		
-		if (is_null($keyword))
-		{
-
-			App::abort(400);
-		}
-
 		$results = DB::select(DB::raw(
 			"(SELECT title as title, id as id, 'Filmes' as category, 'movies' as route " . 
 				"FROM movies WHERE title LIKE '%$query%' LIMIT 5)" .
