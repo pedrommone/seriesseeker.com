@@ -221,3 +221,23 @@ footer {
 .autocomplete-selected { background: #F0F0F0; }
 
 #tree-list ul li ul { padding-left: 23px; }
+
+#shows-statuses .list-group .list-group-item {
+
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 100px;
+}
+
+#shows-statuses .list-group .list-group-item .row-content .least-content {
+
+	top: 5px;
+}
+
+#shows-statuses .list-group .list-group-item .list-group-item-heading {
+
+	width: 70%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
