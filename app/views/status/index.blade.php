@@ -6,7 +6,7 @@
 
 	@include('partials.alerts-box')
 
-	<div class="container">
+	<section class="container" id="statuses">
 
 		<div class="row">
 
@@ -41,19 +41,38 @@
 			</div>
 		</div>
 
-		<br>
-		<br>
-		<br>
+		<div class="row graphics">
+			
+			<div class="col-md-5 col-md-offset-1 well">
 
-		<div class="row">
-			<div class="col-md-12 text-center">
+				<h4>Gêneros por filmes</h4><br>
+
+				<ol class="list-styled">
+					@foreach($genres_by_movies as $genre)
+					
+						<li><b>{{ $genre->description }},</b> presente em <b>{{ $genre->contador }}</b> filmes</li>
+					@endforeach
+				</ol>
+			</div>
+
+			<div class="col-md-5 col-md-offset-1 well">
 				
-				Todos os dados são coletados do <a href="themoviedb.org">themoviedb.org</a>, que é um grante parceiro.
+				<h4>Gêneros por séries</h4><br>
+
+				<ol class="list-styled">
+					@foreach($genres_by_shows as $genre)
+					
+						<li><b>{{ $genre->description }},</b> presente em <b>{{ $genre->contador }}</b> séries</li>
+					@endforeach
+				</ol>
 			</div>
 		</div>
 
-		<br>
-		<br>
-		<br>
-	</div>
+		<div class="row credits">
+			<div class="col-md-12 text-center">
+				
+				Todos os dados são coletados do <a href="http://themoviedb.org">themoviedb.org</a>, que é um grande parceiro.
+			</div>
+		</div>
+	</section>
 @stop

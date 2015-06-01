@@ -85,6 +85,7 @@
 			</div>
 		</footer>
 
+		<script src="https://www.google.com/jsapi"></script>
 		<script src="{{ asset('js/jquery-1.10.2.min.js') }}"></script>
 		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('js/jquery.autocomplete.min.js') }}"></script>
