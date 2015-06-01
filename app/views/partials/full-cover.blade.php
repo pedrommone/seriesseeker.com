@@ -4,6 +4,12 @@
 
 	<div class="container">
 		
-		<h3>{{ $title }}</h3>		
+		@if (isset($link))
+
+			<a href="{{ url($link) }}"><h3>{{ $title }}</h3></a>
+		@else
+
+			<h3>{{ $title }}</h3>
+		@endif
 	</div>
 </section>

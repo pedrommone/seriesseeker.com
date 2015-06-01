@@ -23,4 +23,10 @@ class Show extends Eloquent {
 
 		return $this->hasManyThrough('SeasonEpisode', 'ShowSeason', 'show_id', 'show_season_id');
 	}
+
+	public function getFirstAirDateReadableAttribute() {
+
+		return Carbon::parse($this->attributes['first_air_date'])
+			->diffForHumans();
+	}
 }

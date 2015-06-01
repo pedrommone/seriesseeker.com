@@ -5,6 +5,7 @@
 	@include('partials.full-cover', [
 
 		'title' => $episode->season->show->name,
+		'link' => '/shows/show/' . $episode->season->show->id,
 		'url' => ''
 	])
 
