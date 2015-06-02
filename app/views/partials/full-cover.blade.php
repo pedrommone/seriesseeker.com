@@ -5,7 +5,7 @@
 		<img src="http://placehold.it/2048" alt="{{ $title }}">
 	@else
 
-		<img src="{{ $url }}" alt="{{ $title }}">
+		<img src="https://image.tmdb.org/t/p/original/{{ $url }}" alt="{{ $title }}">
 	@endif
 
 	<div class="container">

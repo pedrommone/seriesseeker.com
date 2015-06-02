@@ -5,7 +5,7 @@
 	@include('partials.full-cover', [
 
 		'title' => $movie->title,
-		'url' => 'https://image.tmdb.org/t/p/original/' . $movie->backdrop_url
+		'url' => $movie->backdrop_url
 	])
 
 	@include('partials.alerts-box')
