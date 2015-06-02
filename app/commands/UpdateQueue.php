@@ -5,7 +5,7 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class updateQueue extends Command {
+class UpdateQueue extends Command {
 
 	protected $name = 'update:queue';
 	protected $description = 'Add some items to update in queue.';
@@ -14,5 +14,4 @@ class updateQueue extends Command {
 	{
 		
 	}
-
 }
