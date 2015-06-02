@@ -18,3 +18,4 @@ Artisan::add(new PopulateShows);
 Artisan::add(new UpdateQueue);
 Artisan::add(new AlertWeeklyUpdate);
 Artisan::add(new AlertDailyEpisodes);
+Artisan::add(new AlertDailyMovie);
