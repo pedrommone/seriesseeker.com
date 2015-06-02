@@ -59,16 +59,16 @@
 					
 					<div class="col-md-12 text-right">
 
-						@if (in_array($show->id, $watched_episodes))
+						@if ($user_follow)
 
 							<a
 								class="btn btn-warning"
-								href="{{ url('season-episodes/mark-as-unwatched/' . $show->id) }}">Desmarcar como assistido</a>
+								href="{{ url('shows/unfollow/' . $show->id) }}">Deixar de seguir</a>
 						@else
 
 							<a
 								class="btn btn-success"
-								href="{{ url('season-episodes/mark-as-watched/' . $show->id) }}">Marcar como assistido</a>
+								href="{{ url('shows/follow/' . $show->id) }}">Seguir série</a>
 						@endif
 					</div>
 				</div>
