@@ -16,3 +16,5 @@ Artisan::add(new UpdateGenres);
 Artisan::add(new PopulateMovies);
 Artisan::add(new PopulateShows);
 Artisan::add(new UpdateQueue);
+Artisan::add(new AlertWeeklyUpdate);
+Artisan::add(new AlertDailyEpisodes);
