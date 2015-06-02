@@ -28,7 +28,7 @@
 							</div>
 
 							<div class="row-content">
-								<div class="least-content">{{ $movie->release_date_readable }}</div>
+								<div class="least-content">{{ $movie->release_date_readable or $movie->release_date }}</div>
 								<h4 class="list-group-item-heading">{{ $movie->title }}</h4>
 								<p class="list-group-item-text">{{ str_limit($movie->overview, 150, '...') }}</p>
 							</div>
@@ -69,7 +69,7 @@
 							</div>
 
 							<div class="row-content">
-								<div class="least-content">{{ $episode->air_date_readable }}</div>
+								<div class="least-content">{{ $episode->air_date_readable or $episode->air_date }}</div>
 								<h4 class="list-group-item-heading">{{ $episode->name }}</h4>
 								<p class="list-group-item-text">{{ str_limit($episode->overview, 150, '...') }}</p>
 							</div>
