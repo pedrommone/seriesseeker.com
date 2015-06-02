@@ -94,7 +94,7 @@
 	padding-left: 12px;
 }
 
-#alerts-box {
+#alerts-box > .alert {
 
 	margin-top: 30px;
 }
