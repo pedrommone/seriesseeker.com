@@ -5,10 +5,6 @@
 	<li{{ Request::segment(1) == 'my-account' ? ' class="active"' : ''}}>
 		<a href="{{ url('/my-account') }}">Minha conta</a>
 	</li>
-	
-	<li>
-		<a href="{{ url('/users/logout') }}">Sair</a>
-	</li>
 @else
 
 	<li{{ Request::segment(1) == 'users' ? ' class="active"' : '' }}>
@@ -19,3 +15,10 @@
 <li{{ Request::segment(1) == 'status' ? ' class="active"' : '' }}>
 	<a href="{{ url('/status') }}">Status</a>
 </li>
+
+@if (Auth::check())
+	
+	<li>
+		<a href="{{ url('/users/logout') }}">Sair</a>
+	</li>
+@endif

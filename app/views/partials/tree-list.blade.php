@@ -31,7 +31,7 @@
 			                    		type="checkbox"
 				                    	data-target-season="{{ $season->id }}"
 				                    	data-target-episode="{{ $episode->id }}"
-				                    	checked="{{ in_array($episode->id, $watched_episodes) ? 'checked' : 'false' }}">
+				                    	{{ in_array($episode->id, $watched_episodes) ? 'checked="checked"' : '' }}>
 								</label>
 
 			                    <a href="{{ url('season-episodes/show/' . $episode->id) }}">{{ $episode->name or 'Não encontrado' }}</a>

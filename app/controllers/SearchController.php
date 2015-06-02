@@ -15,6 +15,8 @@ class SearchController extends BaseController {
 				->withErrors($bag);
 		}
 
+		$keyword = Input::get('keyword');
+
 		$results = DB::select(DB::raw(
 			"(SELECT title as title, id, 'Filmes' as category, 'movies' as route, overview " . 
 				"FROM movies WHERE title LIKE '%$keyword%')" .

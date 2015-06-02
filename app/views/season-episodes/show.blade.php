@@ -6,7 +6,7 @@
 
 		'title' => $episode->season->show->name,
 		'link' => '/shows/show/' . $episode->season->show->id,
-		'url' => 'https://image.tmdb.org/t/p/original/' . ($episode->still_url ? $show->backdrop_url : $show->backdrop_url)
+		'url' => $episode->still_url ? $episode->still_url : $show->backdrop_url
 	])
 
 	@include('partials.alerts-box')
