@@ -2,9 +2,9 @@
 
 @section('content')
 	
-	@include('partials.global-search')
-
 	@include('partials.alerts-box')
+
+	@include('partials.global-search')
 
 	@include('partials.show-statuses', [
 

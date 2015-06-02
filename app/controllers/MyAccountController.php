@@ -14,7 +14,8 @@ class MyAccountController extends BaseController {
 				"join season_episodes on season_episodes.show_season_id = show_seasons.id " .
 				"where season_episodes.air_date > now() " .
 					"and users.id = 1 " . 
-					"order by season_episodes.air_date asc"
+				"order by season_episodes.air_date asc " .
+				"limit 5"
 		));
 
 		return View::make('my-account.index', [
