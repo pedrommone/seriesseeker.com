@@ -192,7 +192,8 @@ footer {
 .autocomplete-suggestions {
 
 	background-color: #fff;
-	padding: 19px;
+	padding: 10px;
+	padding-top: 0px;
 	margin-bottom: 20px;
 	box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
 	border-radius: 2px;
@@ -206,6 +207,7 @@ footer {
 
 	font-size: 18px;
 	margin-bottom: 10px;
+	margin-top: 10px;
 	line-height: 1.5;
 }
 

@@ -14,7 +14,7 @@
 				
 				<div class="well">
 
-					@foreach($results as $row)
+					@forelse($results as $row)
 						
 						<div class="list-group">
 
@@ -42,7 +42,10 @@
 
 							<div class="list-group-separator"></div>
 						</div>
-					@endforeach
+					@empty
+
+						Nenhum resultado foi encontrado
+					@endforelse
 				</div>
 			</div>
 		</div>
