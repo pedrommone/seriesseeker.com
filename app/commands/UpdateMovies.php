@@ -13,9 +13,8 @@ class UpdateMovies extends Command {
 	public function fire()
 	{
 
-		$movie = TMDB::getMoviesApi()->getMovie(1);
+		$changes = TMDB::getChangesApi()->getMovieChanges('tt0094675');
 
-		return var_dump($genres);
 
 		foreach ($genres['genres'] as $genre)
 		{
