@@ -8,7 +8,7 @@
 
 				<h4>Próximos filmes</h4>
 
-				@foreach($next_movies as $movie)
+				@forelse($next_movies as $movie)
 					
 					<div class="list-group">
 
@@ -36,7 +36,10 @@
 
 						<div class="list-group-separator"></div>
 					</div>
-				@endforeach
+				@empty
+
+					Não existem filmes para mostrar
+				@endforelse
 			</div>
 		</div>
 
@@ -46,7 +49,7 @@
 
 				<h4>Próximos episódios</h4>
 
-				@foreach($next_episodes as $episode)
+				@forelse($next_episodes as $episode)
 
 					<div class="list-group">
 
@@ -74,7 +77,10 @@
 
 						<div class="list-group-separator"></div>
 					</div>
-				@endforeach
+				@empty
+
+					Não existem episódios para exibir
+				@endforelse
 			</div>
 		</div>
 	</div>

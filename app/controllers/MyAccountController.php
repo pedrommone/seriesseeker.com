@@ -5,14 +5,16 @@ class MyAccountController extends BaseController {
 	public function getIndex()
 	{
 
-		die(var_dump(
-
-			User::with('shows')
-				->findOrFail(Auth::user()->id)
-				->shows()
-				->get()
-				->take(5)
-
+		$next_episodes = DB::select(DB::raw(
+			"select season_episodes.* " .
+				"from users " .
+				"join show_user on show_user.user_id = users.id " .
+				"join shows on shows.id = show_user.show_id " .
+				"join show_seasons on show_seasons.show_id = shows.id " .
+				"join season_episodes on season_episodes.show_season_id = show_seasons.id " .
+				"where season_episodes.air_date > now() " .
+					"and users.id = 1 " . 
+					"order by season_episodes.air_date asc"
 		));
 
 		return View::make('my-account.index', [
@@ -24,12 +26,7 @@ class MyAccountController extends BaseController {
 				->get()
 				->take(5),
 			
-			'next_episodes' => User::with('shows', 'shows.episodes')
-				->findOrFail(Auth::user()->id)
-				->shows()
-				->episodes()
-				->get()
-				->take(5)
+			'next_episodes' => $next_episodes
 		]);
 	}
 }
