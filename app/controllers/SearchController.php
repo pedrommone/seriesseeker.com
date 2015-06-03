@@ -53,7 +53,7 @@ class SearchController extends BaseController {
 			"(SELECT name as title, id as id, 'Séries' as category, 'shows' as route " . 
 				"FROM shows WHERE name LIKE '%$query%' LIMIT 5)" .
 			"UNION ALL" .
-			"(SELECT name as title, id as id, 'Episódios' as category, 'season-eapisodes' as route " . 
+			"(SELECT name as title, id as id, 'Episódios' as category, 'season-episodes' as route " . 
 				"FROM season_episodes WHERE name LIKE '%$query%' LIMIT 5)"
 		));
 
