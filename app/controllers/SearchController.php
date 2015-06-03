@@ -24,7 +24,7 @@ class SearchController extends BaseController {
 			"(SELECT name as title, id, 'Séries' as category, 'shows' as route, overview " . 
 				"FROM shows WHERE name LIKE '%$keyword%')" .
 			"UNION ALL" .
-			"(SELECT name as title, id, 'Episódios' as category, 'season-eapisodes' as route, overview " . 
+			"(SELECT name as title, id, 'Episódios' as category, 'season-episodes' as route, overview " . 
 				"FROM season_episodes WHERE name LIKE '%$keyword%')"
 		));
 
