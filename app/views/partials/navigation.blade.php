@@ -8,7 +8,11 @@
 @else
 
 	<li{{ Request::segment(1) == 'users' ? ' class="active"' : '' }}>
-		<a href="{{ url('/users') }}">Criar conta/Entrar</a>
+		<a href="{{ url('/users') }}">Criar conta</a>
+	</li>
+
+	<li{{ Request::segment(1) == 'users' ? ' class="active"' : '' }}>
+		<a href="{{ url('/users') }}">Entrar</a>
 	</li>
 @endif
 
