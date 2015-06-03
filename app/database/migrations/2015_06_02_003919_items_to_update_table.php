@@ -16,7 +16,7 @@ class ItemsToUpdateTable extends Migration {
 
 			$table->increments('id');
 			$table->unsignedInteger('target');
-			$table->string('type', 100);
+			$table->char('type', 1);
 		});
 	}
 
@@ -27,7 +27,7 @@ class ItemsToUpdateTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('items_to_update');
 	}
 
 }

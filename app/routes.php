@@ -1,5 +1,7 @@
 <?php
 
+use Tmdb\Laravel\Facades\Tmdb;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
