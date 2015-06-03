@@ -258,6 +258,10 @@ footer {
 	margin-bottom: 40px;
 }
 
-#home { padding: 30px; }
+#home {
+
+	padding: 30px;
+	padding-bottom: 0px;
+}
 
 #home img { width: 140px; }
