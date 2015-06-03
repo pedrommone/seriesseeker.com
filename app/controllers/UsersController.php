@@ -35,7 +35,7 @@ class UsersController extends BaseController {
 					$bag = new \Illuminate\Support\MessageBag;	
 					$bag->add('success', 'Bem vindo ' . Auth::user()->name . '!');
 
-					return Redirect::to('/')
+					return Redirect::back()
 						->with('success', $bag);
 				}
 				else
@@ -44,7 +44,7 @@ class UsersController extends BaseController {
 					$bag = new \Illuminate\Support\MessageBag;
 					$bag->add('error', 'Credenciais inválidas.');
 
-					return Redirect::to('/')
+					return Redirect::back()
 						->withErrors($bag);
 				}				
 			}
