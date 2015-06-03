@@ -93,13 +93,6 @@
 
 							<input type="hidden" id="timezone" name="timezone" value="America/Buenos_Aires">
 
-							<!-- <div class="form-group{{ $errors->has('timezone') ? ' has-error' : '' }}">
-								<label for="timezone" class="col-lg-2 control-label">Fuso horário</label>
-								<div class="col-lg-10">
-									{{ Form::select('timezone', $timezones, null, ['class' => 'form-control']); }}
-								</div>
-							</div> -->
-
 							<div class="form-group">
 								<div class="col-lg-10 col-lg-offset-2">
 									<button type="submit" class="btn btn-primary">Criar conta</button>
