@@ -103,7 +103,7 @@
 				ga('create', 'UA-63690573-1', 'auto');
 				ga('send', 'pageview');
 
-				function(f,b){
+				(function(f,b){
 			        var c;
 			        f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
 			        f._hjSettings={hjid:40503, hjsv:4};
