@@ -4,7 +4,7 @@
 
 	@include('partials.full-cover', [
 
-		'title' => $movie->title,
+		'title' => null,
 		'url' => $movie->backdrop_url
 	])
 
