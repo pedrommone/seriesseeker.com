@@ -18,7 +18,7 @@
 
 								@if ($movie->poster_url)
 				            		<img class="circle"
-				            			src="https://image.tmdb.org/t/p/w185/{{ $movie->poster_url }}"
+				            			src="https://image.tmdb.org/t/p/original/{{ $movie->poster_url }}"
 				            			alt="{{ $movie->title }}">
 				            	@else
 						        	<img class="circle"
@@ -59,7 +59,7 @@
 
 								@if ($episode->still_url)
 						            <img class="circle"
-						            	src="https://image.tmdb.org/t/p/w185/{{ $episode->still_url }}"
+						            	src="https://image.tmdb.org/t/p/original/{{ $episode->still_url }}"
 						            	alt="{{ $episode->name }}">
 						        @else
 						        	<img class="circle"

@@ -94,7 +94,7 @@
 	padding-left: 12px;
 }
 
-#alerts-box {
+#alerts-box > .alert {
 
 	margin-top: 30px;
 }
@@ -147,6 +147,7 @@
 	text-decoration: none;
 }
 
+#show,
 #movie,
 #season-episode { padding: 30px; }
 
@@ -192,7 +193,8 @@ footer {
 .autocomplete-suggestions {
 
 	background-color: #fff;
-	padding: 19px;
+	padding: 10px;
+	padding-top: 0px;
 	margin-bottom: 20px;
 	box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
 	border-radius: 2px;
@@ -206,6 +208,7 @@ footer {
 
 	font-size: 18px;
 	margin-bottom: 10px;
+	margin-top: 10px;
 	line-height: 1.5;
 }
 
@@ -254,3 +257,11 @@ footer {
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
+
+#home {
+
+	padding: 30px;
+	padding-bottom: 0px;
+}
+
+#home img { width: 140px; }

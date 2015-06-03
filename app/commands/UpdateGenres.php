@@ -7,8 +7,8 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class UpdateGenres extends Command {
 
-	protected $name 			= 'update:genres';
-	protected $description 	= 'Update genres database';
+	protected $name = 'update:genres';
+	protected $description = 'Update genres database';
 
 	public function fire()
 	{
@@ -22,7 +22,7 @@ class UpdateGenres extends Command {
 			{
 
 				$db_genre = Genre::firstOrCreate([
-						'description' => $genre['name']
+					'description' => $genre['name']
 				]);
 			}
 		}

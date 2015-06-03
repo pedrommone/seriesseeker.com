@@ -12,6 +12,7 @@ class ItemsToUpdateTable extends Migration {
 	 */
 	public function up()
 	{
+		
 		Schema::create('items_to_update', function($table){
 
 			$table->increments('id');
