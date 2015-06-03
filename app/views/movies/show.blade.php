@@ -99,8 +99,8 @@
 					@if (in_array($movie->id, array_keys($has_relationship)))
 
 						<a
-							class="btn btn-warning disabled"
-							href="{{ url('movies/follow/' . $movie->id) }}">Me avise quando estreiar</a>
+							class="btn btn-danger"
+							href="{{ url('movies/unfollow/' . $movie->id) }}">Deixar de seguir</a>
 					@else
 
 						<a
