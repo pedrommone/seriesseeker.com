@@ -116,7 +116,8 @@
 	position: absolute;
 	top: calc(-50%);
 	z-index: 1;
-	width: 100%;
+	width: 1920px;
+	height: 800px;
 	background: white;
 }
 
