@@ -30,10 +30,10 @@
 	
 	@include('partials.global-search')
 	
-	@include('partials.show-statuses', [
+	@include('partials.calendar.home', [
 
-		'next_movies' => $next_movies,
-		'next_episod' => $next_movies
+		'movies' => $next_movies,
+		'episodes' => $next_episodes
 	])
 	
 	@include('partials.create-account-bar')

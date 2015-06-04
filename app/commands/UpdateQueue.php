@@ -24,28 +24,59 @@ class UpdateQueue extends Command {
 
 			foreach ($last_changes['results'] as $changes) {
 				
-				$item 			 = new ItemsToUpdate;
+				$item = ItemsToUpdate::where('target', $changes['id'])->first();
+
+				if ( is_null($item) )
+					$item = new ItemsToUpdate;
+
 				$item->target 	 = $changes['id'];
 				$item->type 	 = 'M'; //stands for 'Movie'
 				$item->save();
 
-				echo 'added ' . $changes['id']. "\n";
+				$this->info('added ' . $changes['id']. "\n");
 			}
 		}
 
 		if ( $last_changes['total_pages'] > $last_changes['page'] ) {
-			$this->sweepMoviesChange( $last_changes['page'] + 1 );
+			$this->sweepMoviesChanges( $last_changes['page'] + 1 );
 		} 
 	}
 
 	public function sweepShowsChanges($page = 1)
 	{
-		
+		// Get the first page of changes in the requisition (shows)
+		$last_changes = TMDB::getChangesApi()->getTvChanges([
+
+				'page'		 => $page,
+    			'start_date' => Carbon::now()->subDay()->format('Y-m-d'),
+    			'end_date'   => Carbon::now()->format('Y-m-d')
+		]);
+
+		if( !empty($last_changes['results']) ) {
+
+			foreach ($last_changes['results'] as $changes) {
+				
+				$item = ItemsToUpdate::where('target', $changes['id'])->first();
+
+				if ( is_null($item) )
+					$item = new ItemsToUpdate;
+
+				$item->target 	 = $changes['id'];
+				$item->type 	 = 'S'; //stands for 'Shows'
+				$item->save();
+
+				$this->info('added ' . $changes['id']. "\n");
+			}
+		}
+
+		if ( $last_changes['total_pages'] > $last_changes['page'] ) {
+			$this->sweepShowsChanges( $last_changes['page'] + 1 );
+		}	
 	}
 
 	public function fire()
 	{	
 		$this->sweepMoviesChanges();
-
+		$this->sweepShowsChanges();
 	}
 }

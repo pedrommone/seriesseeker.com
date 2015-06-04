@@ -9,7 +9,7 @@ class SearchController extends BaseController {
 		{
 
 			$bag = new \Illuminate\Support\MessageBag;
-			$bag->add('error', 'Impossível buscar o vazio.');
+			$bag->add('error', 'Você precisa buscar algo, assim que a busca funciona.');
 
 			return Redirect::back()
 				->withErrors($bag);
@@ -24,7 +24,7 @@ class SearchController extends BaseController {
 			"(SELECT name as title, id, 'Séries' as category, 'shows' as route, overview " . 
 				"FROM shows WHERE name LIKE '%$keyword%')" .
 			"UNION ALL" .
-			"(SELECT name as title, id, 'Episódios' as category, 'season-eapisodes' as route, overview " . 
+			"(SELECT name as title, id, 'Episódios' as category, 'season-episodes' as route, overview " . 
 				"FROM season_episodes WHERE name LIKE '%$keyword%')"
 		));
 
@@ -53,7 +53,7 @@ class SearchController extends BaseController {
 			"(SELECT name as title, id as id, 'Séries' as category, 'shows' as route " . 
 				"FROM shows WHERE name LIKE '%$query%' LIMIT 5)" .
 			"UNION ALL" .
-			"(SELECT name as title, id as id, 'Episódios' as category, 'season-eapisodes' as route " . 
+			"(SELECT name as title, id as id, 'Episódios' as category, 'season-episodes' as route " . 
 				"FROM season_episodes WHERE name LIKE '%$query%' LIMIT 5)"
 		));
 
