@@ -7,10 +7,12 @@
 			<div class="row-picture">
 
 				@if ($episode->still_url)
+
 		            <img class="circle"
 		            	src="https://image.tmdb.org/t/p/original/{{ $episode->still_url }}"
 		            	alt="{{ $episode->name }}">
 		        @else
+
 		        	<img class="circle"
 		            	src="https://placehold.it/75"
 		            	alt="{{ $episode->name }}">
@@ -18,8 +20,9 @@
 			</div>
 
 			<div class="row-content">
+
 				<div class="least-content">{{ $episode->air_date_readable or $episode->air_date }}</div>
-				<h4 class="list-group-item-heading">{{ $episode->name }}</h4>
+				<h4 class="list-group-item-heading">{{ str_limit($episode->name, 25, '...') }}</h4>
 				<p class="list-group-item-text">{{ str_limit($episode->overview, 150, '...') }}</p>
 			</div>
 		</a>
