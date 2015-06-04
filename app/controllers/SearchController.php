@@ -9,7 +9,7 @@ class SearchController extends BaseController {
 		{
 
 			$bag = new \Illuminate\Support\MessageBag;
-			$bag->add('error', 'Impossível buscar o vazio.');
+			$bag->add('error', 'Você precisa buscar algo, assim que a busca funciona.');
 
 			return Redirect::back()
 				->withErrors($bag);
