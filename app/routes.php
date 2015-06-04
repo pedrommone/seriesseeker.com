@@ -26,5 +26,11 @@ Route::controller('shows', 'ShowsController');
 
 Route::get('teste', function(){
 
-	
+	$changes = TMDB::getChangesApi()->getTvChanges([
+
+			'start_date' => Carbon::now()->subDay()->format('Y-m-d'),
+    		'end_date'   => Carbon::now()->format('Y-m-d')
+		]);
+
+	return var_dump($changes);
 });
