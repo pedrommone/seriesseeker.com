@@ -136,10 +136,10 @@
 	top: 50px;
 	line-height: 70px;
 	text-shadow:
-			-1px 0 white,
-			0 1px white,
-			1px 0 white,
-			0 -1px white;
+		-1px 0 white,
+		0 1px white,
+		1px 0 white,
+		0 -1px white;
 }
 
 #full-cover a:hover {
@@ -265,3 +265,5 @@ footer {
 }
 
 #home img { width: 140px; }
+
+#my-account .containers .well { height: 200px; }

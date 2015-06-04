@@ -2,6 +2,10 @@
 
 @if (Auth::check())
 	
+	<li{{ Request::segment(1) == 'calendar' ? ' class="active"' : ''}}>
+		<a href="{{ url('/calendar') }}">Calendário</a>
+	</li>
+
 	<li{{ Request::segment(1) == 'my-account' ? ' class="active"' : ''}}>
 		<a href="{{ url('/my-account') }}">Minha conta</a>
 	</li>

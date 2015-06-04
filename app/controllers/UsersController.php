@@ -8,6 +8,48 @@ class UsersController extends BaseController {
 		return View::make('users.index');
 	}
 
+	public function postPathPassword() {
+
+		$validator = Validator::make(Input::all(), [
+
+			'password' => 'required|max:10'
+		]);
+
+		if ($validator->fails())
+		{
+
+			return Redirect::back()
+				->withInput()
+				->withErrors($validator);
+		}
+		else
+		{
+
+			try
+			{
+
+				$user = User::findOrFail(Auth::user()->id);
+				$user->password = Hash::make(Input::get('password'));
+				$user->save();
+
+				$bag = new \Illuminate\Support\MessageBag;	
+				$bag->add('success', 'Senha alterada com sucesso');
+
+				return Redirect::to('my-account')
+					->with('success', $bag);
+			}
+			catch (Exception $e)
+			{
+
+				$bag = new \Illuminate\Support\MessageBag;
+				$bag->add('error', 'Erro interno: ' . $e->getMessage());
+
+				return Redirect::to('/')
+					->withErrors($bag);
+			}
+		}
+	}
+
 	public function postAuth()
 	{
 		
@@ -35,7 +77,7 @@ class UsersController extends BaseController {
 					$bag = new \Illuminate\Support\MessageBag;	
 					$bag->add('success', 'Bem vindo ' . Auth::user()->name . '!');
 
-					return Redirect::back()
+					return Redirect::to('my-account')
 						->with('success', $bag);
 				}
 				else
