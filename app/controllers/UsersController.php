@@ -203,4 +203,69 @@ class UsersController extends BaseController {
 			}
 		}
 	}
+
+	public function getRecoveryPassword()
+	{
+
+		return View::make('users.recovery-password');
+	}
+
+	public function postRecoveryPassword() {
+
+		$validator = Validator::make(Input::all(), [
+
+			'email' => 'required|email|exists:users,email'
+		]);
+
+		if ($validator->fails())
+		{
+
+			return Redirect::back()
+				->withInput()
+				->withErrors($validator);
+		}
+		else
+		{
+
+			try
+			{
+
+				$new_password = str_random(6);
+
+				$user = User::whereEmail(Input::get('email'))
+					->firstOrFail();
+
+				$user->password = Hash::make($new_password);
+				$user->save();
+
+				$email_aux = $user->email;
+
+				Mail::send('emails.new-password', [
+
+					'name' => $user->name,
+					'new_password' => $new_password
+				], function($message) use ($email_aux) {
+
+					$message
+						->to($email_aux)
+						->subject('Nova senha no SeriesSeeker');
+				});
+
+				$bag = new \Illuminate\Support\MessageBag;	
+				$bag->add('success', 'Senha alterada com sucesso, um email foi enviado com a nova senha');
+
+				return Redirect::to('users')
+					->with('success', $bag);
+			}
+			catch (Exception $e)
+			{
+
+				$bag = new \Illuminate\Support\MessageBag;
+				$bag->add('error', 'Erro interno: ' . $e->getMessage());
+
+				return Redirect::to('/')
+					->withErrors($bag);
+			}
+		}
+	}
 }
