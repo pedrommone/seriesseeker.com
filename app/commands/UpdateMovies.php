@@ -16,12 +16,14 @@ class UpdateMovies extends Command {
 		// Get the first 20 movies
 		$movie_changes = ItemsToUpdate::where('type', 'M')->get()->take(20);
 
-		if ( !$movie_changes ) 
+		if ( ! $movie_changes ) 
 			return;
 
-		foreach ($movie_changes as $change) {
+		foreach ($movie_changes as $change)
+		{
 
-			try {
+			try
+			{
 				
 				$movie = TMDB::getMoviesApi()->getMovie($change->target);
 
@@ -68,13 +70,17 @@ class UpdateMovies extends Command {
 
 			} catch (Exception $e) {
 
-				if ( $e->getMessage() == "The pre-requisite id is invalid or not found." ) {
+				if ( $e->getMessage() == "The pre-requisite id is invalid or not found." )
+				{
+
 					$change->delete();
 					continue;
 				}
 
 				$this->error("ID not found: " . $e->getMessage());
 			}
+
+			sleep(1);
 		}
 	}
 }

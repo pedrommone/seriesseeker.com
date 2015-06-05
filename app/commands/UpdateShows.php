@@ -12,15 +12,18 @@ class UpdateShows extends Command {
 
 	public function fire()
 	{
+
 		// Get the first 20 shows
 		$show_changes = ItemsToUpdate::where('type', 'S')->get()->take(20);
 
-		if (!$show_changes)
+		if ( ! $show_changes)
 			return;
 
-		foreach ($show_changes as $change) {
+		foreach ($show_changes as $change)
+		{
 			
-			try {
+			try
+			{
 				
 				// Get the target of update
 				$show = TMDB::getTvApi()->getTvshow($change->target);
@@ -142,14 +145,15 @@ class UpdateShows extends Command {
 			} catch (Exception $e) {
 				
 				if ( $e->getMessage() == "The pre-requisite id is invalid or not found." ) {
+					
 					$change->delete();
 					continue;
 				}
 
 				$this->error("ID not found: " . $e->getMessage());
 			}
-			
+
+			sleep(1);			
 		}
 	}
-
 }

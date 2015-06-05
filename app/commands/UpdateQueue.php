@@ -21,9 +21,11 @@ class UpdateQueue extends Command {
     			'end_date'   => Carbon::now()->format('Y-m-d')
 		]);
 
-		if( ! empty($last_changes['results']) ) {
+		if( ! empty($last_changes['results']) )
+		{
 
-			foreach ($last_changes['results'] as $changes) {
+			foreach ($last_changes['results'] as $changes)
+			{
 				
 				$item = ItemsToUpdate::where('target', $changes['id'])->first();
 
@@ -38,7 +40,11 @@ class UpdateQueue extends Command {
 			}
 		}
 
-		if ( $last_changes['total_pages'] > $last_changes['page'] ) {
+		if ( $last_changes['total_pages'] > $last_changes['page'] )
+		{
+
+			sleep(1);
+
 			$this->sweepMoviesChanges( $last_changes['page'] + 1 );
 		} 
 	}
@@ -54,9 +60,11 @@ class UpdateQueue extends Command {
     			'end_date'   => Carbon::now()->format('Y-m-d')
 		]);
 
-		if( ! empty($last_changes['results']) ) {
+		if( ! empty($last_changes['results']) )
+		{
 
-			foreach ($last_changes['results'] as $changes) {
+			foreach ($last_changes['results'] as $changes)
+			{
 				
 				$item = ItemsToUpdate::where('target', $changes['id'])->first();
 
@@ -71,13 +79,18 @@ class UpdateQueue extends Command {
 			}
 		}
 
-		if ( $last_changes['total_pages'] > $last_changes['page'] ) {
+		if ( $last_changes['total_pages'] > $last_changes['page'] )
+		{
+
+			sleep(1);
+			
 			$this->sweepShowsChanges( $last_changes['page'] + 1 );
 		}	
 	}
 
 	public function fire()
 	{	
+
 		$this->sweepMoviesChanges();
 		$this->sweepShowsChanges();
 	}
