@@ -10,14 +10,14 @@ class UpdateQueue extends Command {
 	protected $name = 'update:queue';
 	protected $description = 'Add some items to update in queue.';
 
-	public function sweepMoviesChanges($page = 1)
+	public function sweepMoviesChanges($page = 1, $days)
 	{
 
 		// Get the first page of changes in the requisition (movies)
 		$last_changes = TMDB::getChangesApi()->getMovieChanges([
 
 				'page'		 => $page,
-    			'start_date' => Carbon::now()->subDay()->format('Y-m-d'),
+    			'start_date' => Carbon::now()->subDays($days)->format('Y-m-d'),
     			'end_date'   => Carbon::now()->format('Y-m-d')
 		]);
 
@@ -43,20 +43,20 @@ class UpdateQueue extends Command {
 		if ( $last_changes['total_pages'] > $last_changes['page'] )
 		{
 
-			sleep(1);
+			sleep(2);
 
-			$this->sweepMoviesChanges( $last_changes['page'] + 1 );
+			$this->sweepMoviesChanges( $last_changes['page'] + 1, $days );
 		} 
 	}
 
-	public function sweepShowsChanges($page = 1)
+	public function sweepShowsChanges($page = 1, $days)
 	{
 
 		// Get the first page of changes in the requisition (shows)
 		$last_changes = TMDB::getChangesApi()->getTvChanges([
 
 				'page'		 => $page,
-    			'start_date' => Carbon::now()->subDay()->format('Y-m-d'),
+    			'start_date' => Carbon::now()->subDays($days)->format('Y-m-d'),
     			'end_date'   => Carbon::now()->format('Y-m-d')
 		]);
 
@@ -84,14 +84,30 @@ class UpdateQueue extends Command {
 
 			sleep(2);
 			
-			$this->sweepShowsChanges( $last_changes['page'] + 1 );
+			$this->sweepShowsChanges( $last_changes['page'] + 1, $days );
 		}	
 	}
 
 	public function fire()
-	{	
+	{
 
-		$this->sweepMoviesChanges();
-		$this->sweepShowsChanges();
+		$time = $this->argument('time') ? $this->argument('time') : 1;
+
+		$this->sweepMoviesChanges(1, $time);
+		$this->sweepShowsChanges(1, $time);
+	}
+
+	protected function getArguments()
+	{
+
+		return array(
+			array('time', InputArgument::OPTIONAL, 'Set the value for subdate')
+		);
+	}
+
+	protected function getOptions()
+	{
+
+		return [];
 	}
 }
