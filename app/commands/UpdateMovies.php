@@ -65,21 +65,12 @@ class UpdateMovies extends Command {
 
 				$model->genres()->sync($genres);
 
-				// delete the item
-				$change->delete();
-
 			} catch (Exception $e) {
-
-				if ( $e->getMessage() == "The pre-requisite id is invalid or not found." )
-				{
-
-					$change->delete();
-					continue;
-				}
 
 				$this->error("ID not found: " . $e->getMessage());
 			}
 
+			$change->delete();
 			sleep(1);
 		}
 	}

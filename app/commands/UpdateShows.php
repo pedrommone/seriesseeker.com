@@ -127,8 +127,6 @@ class UpdateShows extends Command {
 						}			
 
 					} while (true);
-
-					$change->delete();
 				}
 				catch (Tmdb\Exception\TmdbApiException $e)
 				{
@@ -143,15 +141,11 @@ class UpdateShows extends Command {
 
 				sleep(1);
 			} catch (Exception $e) {
-				
-				if ( $e->getMessage() == "The pre-requisite id is invalid or not found." ) {
-					
-					$change->delete();
-					continue;
-				}
 
 				$this->error("ID not found: " . $e->getMessage());
 			}
+
+			$change->delete();
 
 			sleep(5);			
 		}
