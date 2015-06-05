@@ -12,6 +12,7 @@ class UpdateQueue extends Command {
 
 	public function sweepMoviesChanges($page = 1)
 	{
+
 		// Get the first page of changes in the requisition (movies)
 		$last_changes = TMDB::getChangesApi()->getMovieChanges([
 
@@ -20,7 +21,7 @@ class UpdateQueue extends Command {
     			'end_date'   => Carbon::now()->format('Y-m-d')
 		]);
 
-		if( !empty($last_changes['results']) ) {
+		if( ! empty($last_changes['results']) ) {
 
 			foreach ($last_changes['results'] as $changes) {
 				
@@ -33,7 +34,7 @@ class UpdateQueue extends Command {
 				$item->type 	 = 'M'; //stands for 'Movie'
 				$item->save();
 
-				$this->info('added ' . $changes['id']. "\n");
+				$this->info('added ' . $changes['id']);
 			}
 		}
 
@@ -44,6 +45,7 @@ class UpdateQueue extends Command {
 
 	public function sweepShowsChanges($page = 1)
 	{
+
 		// Get the first page of changes in the requisition (shows)
 		$last_changes = TMDB::getChangesApi()->getTvChanges([
 
@@ -52,7 +54,7 @@ class UpdateQueue extends Command {
     			'end_date'   => Carbon::now()->format('Y-m-d')
 		]);
 
-		if( !empty($last_changes['results']) ) {
+		if( ! empty($last_changes['results']) ) {
 
 			foreach ($last_changes['results'] as $changes) {
 				
@@ -65,7 +67,7 @@ class UpdateQueue extends Command {
 				$item->type 	 = 'S'; //stands for 'Shows'
 				$item->save();
 
-				$this->info('added ' . $changes['id']. "\n");
+				$this->info('added ' . $changes['id']);
 			}
 		}
 
