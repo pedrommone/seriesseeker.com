@@ -27,10 +27,7 @@ class UpdateQueue extends Command {
 			foreach ($last_changes['results'] as $changes)
 			{
 				
-				$item = ItemsToUpdate::where('target', $changes['id'])->first();
-
-				if ( is_null($item) )
-					$item = new ItemsToUpdate;
+				$item = new ItemsToUpdate;
 
 				$item->target 	 = $changes['id'];
 				$item->type 	 = 'M'; //stands for 'Movie'
@@ -66,10 +63,7 @@ class UpdateQueue extends Command {
 			foreach ($last_changes['results'] as $changes)
 			{
 				
-				$item = ItemsToUpdate::where('target', $changes['id'])->first();
-
-				if ( is_null($item) )
-					$item = new ItemsToUpdate;
+				$item = new ItemsToUpdate;
 
 				$item->target 	 = $changes['id'];
 				$item->type 	 = 'S'; //stands for 'Shows'
@@ -103,11 +97,5 @@ class UpdateQueue extends Command {
 		return array(
 			array('time', InputArgument::OPTIONAL, 'Set the value for subdate')
 		);
-	}
-
-	protected function getOptions()
-	{
-
-		return [];
 	}
 }
