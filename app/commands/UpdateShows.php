@@ -153,7 +153,7 @@ class UpdateShows extends Command {
 				$this->error("ID not found: " . $e->getMessage());
 			}
 
-			sleep(1);			
+			sleep(5);			
 		}
 	}
 }

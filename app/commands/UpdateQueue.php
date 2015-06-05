@@ -82,7 +82,7 @@ class UpdateQueue extends Command {
 		if ( $last_changes['total_pages'] > $last_changes['page'] )
 		{
 
-			sleep(1);
+			sleep(2);
 			
 			$this->sweepShowsChanges( $last_changes['page'] + 1 );
 		}	
