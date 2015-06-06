@@ -26,7 +26,7 @@ class SeasonsController extends BaseController {
 		else
 		{
 			$bag = new \Illuminate\Support\MessageBag;	
-			$bag->add('success', 'Marcado como assistido com sucesso!');
+			$bag->add('success', 'Temporada marcada como assistida com sucesso!');
 
 			return Redirect::back()
 				->with('success', $bag);
@@ -58,7 +58,7 @@ class SeasonsController extends BaseController {
 		else
 		{
 			$bag = new \Illuminate\Support\MessageBag;	
-			$bag->add('success', 'Desmarcado como assistido com sucesso!');
+			$bag->add('success', 'A temporada foi desmarcada como assistida com sucesso!');
 
 			return Redirect::back()
 				->with('success', $bag);

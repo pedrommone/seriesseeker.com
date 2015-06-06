@@ -60,7 +60,7 @@ class MoviesController extends BaseController {
 		else
 		{
 			$bag = new \Illuminate\Support\MessageBag;	
-			$bag->add('success', 'Marcado como assistido com sucesso!');
+			$bag->add('success', "$movie->title marcado como assistido com sucesso!");
 
 			return Redirect::back()
 				->with('success', $bag);
@@ -99,7 +99,7 @@ class MoviesController extends BaseController {
 		else
 		{
 			$bag = new \Illuminate\Support\MessageBag;	
-			$bag->add('success', 'Filme está sendo seguido agora!');
+			$bag->add('success', "Agora você está seguindo $movie->title!");
 
 			return Redirect::back()
 				->with('success', $bag);
@@ -132,7 +132,7 @@ class MoviesController extends BaseController {
 		else
 		{
 			$bag = new \Illuminate\Support\MessageBag;	
-			$bag->add('success', 'Filme está sendo seguido agora!');
+			$bag->add('success', "Você parou de seguir $movie->title!");
 
 			return Redirect::back()
 				->with('success', $bag);

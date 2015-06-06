@@ -15,7 +15,6 @@ class SeasonEpisodesController extends BaseController {
 		{
 
 			$watched_episodes = Auth::user()
-				->with('episodes', 'episodes.season', 'episodes.season.show')
 				->episodes()
 				->lists('id');
 		}
@@ -61,7 +60,7 @@ class SeasonEpisodesController extends BaseController {
 		else
 		{
 			$bag = new \Illuminate\Support\MessageBag;	
-			$bag->add('success', 'Marcado como assistido com sucesso!');
+			$bag->add('success', "$episode->name marcado como assistido com sucesso!");
 
 			return Redirect::back()
 				->with('success', $bag);
@@ -97,7 +96,7 @@ class SeasonEpisodesController extends BaseController {
 		else
 		{
 			$bag = new \Illuminate\Support\MessageBag;	
-			$bag->add('success', 'Desmarcado como assistido com sucesso!');
+			$bag->add('success', "Você parou de seguir $episode->name!");
 
 			return Redirect::back()
 				->with('success', $bag);
