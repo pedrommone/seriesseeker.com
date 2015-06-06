@@ -11,8 +11,6 @@ class MoviesController extends BaseController {
 		{
 
 			$has_relationship = Auth::user()
-				->with('movies')
-				->first()
 				->movies()
 				->lists('type', 'id');
 		}

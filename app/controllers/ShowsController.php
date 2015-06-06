@@ -11,9 +11,8 @@ class ShowsController extends BaseController {
 		if (Auth::check())
 		{
 
-			$watched_episodes = User::findOrFail(Auth::user()->id)
+			$watched_episodes = Auth::user()
 				->with('episodes', 'episodes.season', 'episodes.season.show')
-				->first()
 				->episodes()
 				->lists('id');
 
