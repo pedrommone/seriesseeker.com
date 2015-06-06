@@ -10,7 +10,7 @@ class MoviesController extends BaseController {
 		if (Auth::check())
 		{
 
-			$has_relationship = User::findOrFail(Auth::user()->id)
+			$has_relationship = Auth::user()
 				->with('movies')
 				->first()
 				->movies()
