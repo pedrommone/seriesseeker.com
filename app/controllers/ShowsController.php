@@ -52,6 +52,7 @@ class ShowsController extends BaseController {
 
 		$show = Show::findOrFail($id);
 
+		$show->users()->detach(Auth::user());
 		$show->users()->attach(Auth::user(), [
 
 			'added_on' => Carbon::now()
@@ -91,10 +92,7 @@ class ShowsController extends BaseController {
 
 		$show = Show::findOrFail($id);
 
-		$show->users()->detach(Auth::user(), [
-
-			'added_on' => Carbon::now()
-		]);
+		$show->users()->detach(Auth::user());
 
 		if (Request::ajax())
 		{
