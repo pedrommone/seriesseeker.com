@@ -6,10 +6,10 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		
 		<meta name="description" content="">
 		<meta name="author" content="seriesseeker.com">
-		<link rel="icon" href="{{ asset('favicon.ico') }}">
+		<link rel="icon" href="{{ asset('favicon.png') }}">
 
 		<title>Acompanhe suas series facilmente - SeriesSeeker</title>
 
@@ -44,7 +44,10 @@
 							<span class="icon-bar"></span>
 						</button>
 
-						<a class="navbar-brand" href="{{ url('/') }}">SeriesSeeker</a>
+						<a class="navbar-brand" href="{{ url('/') }}">
+							
+							<img src="{{ url('/img/brand-140-28.png') }}" alt="SeriesSeeker">
+						</a>
 					</div>
 
 					<div class="navbar-collapse collapse navbar-inverse-collapse">
@@ -73,13 +76,21 @@
 							@include('partials.navigation')
 						</ul>
 					</div>
+
+					<div class="col-md-6 text-right">
+						
+						<a href="https://www.themoviedb.org/" target="_new">
+							
+							<img src="{{ url('/img/brand-themmoviedb.png') }}" alt="TheMovieDB">
+						</a>	
+					</div>
 				</div>
 
 				<div class="row">
 					
 					<div class="col-md-13 text-right">
-						
-						Último atualização às {{ date('d/m/y h:s:i') }}
+
+						Último atualização às {{ date('d/m/y h:s:i') }}						
 					</div>
 				</div>
 			</div>

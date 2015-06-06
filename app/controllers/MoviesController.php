@@ -42,7 +42,9 @@ class MoviesController extends BaseController {
 
 		$movie = Movie::findOrFail($id);
 
+		$movie->users()->detach(Auth::user());
 		$movie->users()->attach(Auth::user(), [
+
 			'added_on' => Carbon::now(),
 			'type' => 'W'
 		]);
@@ -80,6 +82,7 @@ class MoviesController extends BaseController {
 
 		$movie = Movie::findOrFail($id);
 
+		$movie->users()->detach(Auth::user());
 		$movie->users()->attach(Auth::user(), [
 
 			'added_on' => Carbon::now(),
@@ -117,11 +120,7 @@ class MoviesController extends BaseController {
 		}
 
 		$movie = Movie::findOrFail($id);
-
-		$movie->users()->detach(Auth::user(), [
-			
-			'type' => 'F'
-		]);
+		$movie->users()->detach(Auth::user());
 
 		if (Request::ajax())
 		{

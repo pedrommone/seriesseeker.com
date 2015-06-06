@@ -13,6 +13,7 @@
 
 Artisan::add(new UpdateMovies);
 Artisan::add(new UpdateGenres);
+Artisan::add(new UpdateShows);
 Artisan::add(new PopulateMovies);
 Artisan::add(new PopulateShows);
 Artisan::add(new UpdateQueue);

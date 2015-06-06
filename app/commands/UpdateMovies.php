@@ -13,25 +13,65 @@ class UpdateMovies extends Command {
 	public function fire()
 	{
 
-		$changes = TMDB::getChangesApi()->getMovieChanges('tt0094675');
+		// Get the first 20 movies
+		$movie_changes = ItemsToUpdate::where('type', 'M')->get()->take(20);
 
+		if ( ! $movie_changes ) 
+			return;
 
-		foreach ($genres['genres'] as $genre)
+		foreach ($movie_changes as $change)
 		{
 
-			$aux = Genre::find($genre['id']);
-
-			if ( ! $aux)
+			try
 			{
+				
+				$movie = TMDB::getMoviesApi()->getMovie($change->target);
 
-				$aux = new Genre;
-				$aux->id = $genre['id'];
+				$this->info("Update movie: " . $movie["original_title"]);
+
+				$model = Movie::find($movie["id"]);
+
+				if ( ! $model ) {
+
+					$model = new Movie;
+					$model->id = $movie["id"];
+				}
+
+				if ( isset($movie["overview"]) )
+					$model->overview = $movie["overview"];
+
+				$model->backdrop_url = $movie["backdrop_path"];
+				$model->poster_url = $movie["poster_path"];
+				$model->imdb_id = $movie["imdb_id"];
+				$model->release_date = $movie["release_date"];
+				$model->runtime = $movie["runtime"];
+				$model->title = $movie["original_title"];
+				$model->vote_average = $movie["vote_average"];
+				$model->vote_count = $movie["vote_count"];
+
+				$model->save();
+
+				$genres = [];
+
+				foreach ($movie['genres'] as $genre)
+				{
+
+					$db_genre = Genre::firstOrCreate([
+						'description' => $genre['name']
+					]);
+
+					$genres[] = $db_genre->id;
+				}
+
+				$model->genres()->sync($genres);
+
+			} catch (Exception $e) {
+
+				$this->error("ID not found: " . $e->getMessage());
 			}
 
-			$aux->description = $genre['name'];
-			$aux->save();
+			$change->delete();
+			sleep(1);
 		}
-
-		$this->info('Saved ' . count($genres['genres']) . ' genres');
 	}
 }

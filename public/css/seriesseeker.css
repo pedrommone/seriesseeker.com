@@ -270,3 +270,9 @@ footer {
 #my-account .containers .well { height: 200px; }
 
 #recovery-password { margin-top: 60px; }
+
+#home-calendar .list-group-item-text,
+#personal-calendar .list-group-item-text { height: 55px; }
+
+#home-calendar .well,
+#personal-calendar .well { height: 675px; }

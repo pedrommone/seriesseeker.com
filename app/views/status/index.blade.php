@@ -67,12 +67,5 @@
 				</ol>
 			</div>
 		</div>
-
-		<div class="row credits">
-			<div class="col-md-12 text-center">
-				
-				Todos os dados são coletados do <a href="http://themoviedb.org">themoviedb.org</a>, que é um grande parceiro.
-			</div>
-		</div>
 	</section>
 @stop
