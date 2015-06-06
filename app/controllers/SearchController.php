@@ -18,13 +18,13 @@ class SearchController extends BaseController {
 		$keyword = Input::get('keyword');
 
 		$results = DB::select(DB::raw(
-			"(SELECT title as title, id, 'Filmes' as category, 'movies' as route, overview " . 
+			"(SELECT title as title, id, 'Filmes' as category, 'movies' as route, overview, poster_url as poster " . 
 				"FROM movies WHERE title LIKE '%$keyword%')" .
 			"UNION ALL" .
-			"(SELECT name as title, id, 'Séries' as category, 'shows' as route, overview " . 
+			"(SELECT name as title, id, 'Séries' as category, 'shows' as route, overview, backdrop_url as poster " . 
 				"FROM shows WHERE name LIKE '%$keyword%')" .
 			"UNION ALL" .
-			"(SELECT name as title, id, 'Episódios' as category, 'season-episodes' as route, overview " . 
+			"(SELECT name as title, id, 'Episódios' as category, 'season-episodes' as route, overview, still_url as poster " . 
 				"FROM season_episodes WHERE name LIKE '%$keyword%')"
 		));
 

@@ -22,9 +22,9 @@
 
 								<div class="row-picture">
 
-									@if (isset($row->poster_url))
+									@if (isset($row->poster))
 					            		<img class="circle"
-					            			src="https://image.tmdb.org/t/p/w185/{{ $movie->poster_url }}"
+					            			src="https://image.tmdb.org/t/p/original/{{ $row->poster }}"
 					            			alt="{{ $row->title }}">
 					            	@else
 							        	<img class="circle"
