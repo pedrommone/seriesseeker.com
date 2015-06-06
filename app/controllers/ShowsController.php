@@ -12,7 +12,6 @@ class ShowsController extends BaseController {
 		{
 
 			$watched_episodes = Auth::user()
-				->with('episodes', 'episodes.season', 'episodes.season.show')
 				->episodes()
 				->lists('id');
 
@@ -31,6 +30,7 @@ class ShowsController extends BaseController {
 		}
 
 		return View::make('shows.show')->with([
+
 			'show' => $show,
 			'watched_episodes' => $watched_episodes,
 			'user_follow' => $user_follow
@@ -53,6 +53,7 @@ class ShowsController extends BaseController {
 		$show = Show::findOrFail($id);
 
 		$show->users()->attach(Auth::user(), [
+
 			'added_on' => Carbon::now()
 		]);
 
@@ -60,11 +61,13 @@ class ShowsController extends BaseController {
 		{
 		
 			return Response::json([
+
 				'message' => 'success'
 			], 200);
 		}
 		else
 		{
+
 			$bag = new \Illuminate\Support\MessageBag;	
 			$bag->add('success', 'Agora você está seguindo a série.');
 
@@ -89,6 +92,7 @@ class ShowsController extends BaseController {
 		$show = Show::findOrFail($id);
 
 		$show->users()->detach(Auth::user(), [
+
 			'added_on' => Carbon::now()
 		]);
 
@@ -96,11 +100,13 @@ class ShowsController extends BaseController {
 		{
 		
 			return Response::json([
+
 				'message' => 'success'
 			], 200);
 		}
 		else
 		{
+
 			$bag = new \Illuminate\Support\MessageBag;	
 			$bag->add('success', 'Agora você não está seguindo a série.');
 
