@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"php-tmdb/laravel": "~1.0",
-		"mrynk/l4-hashids": "dev-master"
+		"mrynk/l4-hashids": "dev-master",
+		"bugsnag/bugsnag-laravel": "1.*"
 	},
 	"autoload": {
 		"classmap": [

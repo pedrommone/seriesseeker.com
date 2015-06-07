@@ -122,7 +122,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Tmdb\Laravel\TmdbServiceProvider',
-		'Mrynk\L4Hashids\L4HashidsServiceProvider'
+		'Mrynk\L4Hashids\L4HashidsServiceProvider',
+		'Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider',
 	),
 
 	/*
@@ -184,12 +185,13 @@ return array(
 		'Seeder'          => 'Illuminate\Database\Seeder',
 		'Session'         => 'Illuminate\Support\Facades\Session',
 		'SoftDeletingTrait' => 'Illuminate\Database\Eloquent\SoftDeletingTrait',
-		'SSH'             => 'Illuminate\Support\Facades\SSH',
-		'Str'             => 'Illuminate\Support\Str',
-		'URL'             => 'Illuminate\Support\Facades\URL',
-		'Validator'       => 'Illuminate\Support\Facades\Validator',
-		'View'            => 'Illuminate\Support\Facades\View',
-		'Carbon'          => 'Carbon\Carbon',
-		'Hashids' 			=> 'Hashids\Hashids'
+		'SSH'               => 'Illuminate\Support\Facades\SSH',
+		'Str'               => 'Illuminate\Support\Str',
+		'URL'               => 'Illuminate\Support\Facades\URL',
+		'Validator'         => 'Illuminate\Support\Facades\Validator',
+		'View'              => 'Illuminate\Support\Facades\View',
+		'Carbon'            => 'Carbon\Carbon',
+		'Hashids' 			=> 'Hashids\Hashids',
+		'Bugsnag'           => 'Bugsnag\BugsnagLaravel\BugsnagFacade',
 	),
 );
