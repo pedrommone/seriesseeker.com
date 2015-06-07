@@ -130,14 +130,42 @@ class UsersController extends BaseController {
 	public function getValidate($hash)
 	{
 
-		$user_id = (new Hashids())->decode($hash);
+		$user_id = (int) (new Hashids())->decode($hash);
 		$user = User::findOrFail($user_id);
 
-		if ( ! isset($user->verfied_at))
+		try
 		{
 
-			$user->verified_at = Carbon::now();
-			$user->save();
+			if ( ! $user->verified_at)
+			{
+
+				$user->verified_at = Carbon::now();
+				$user->save();
+
+				$bag = new \Illuminate\Support\MessageBag;	
+				$bag->add('success', 'Conta verificada com sucesso.');
+
+				return Redirect::to('/')
+					->with('success', $bag);
+			}
+			else
+			{
+
+				$bag = new \Illuminate\Support\MessageBag;
+				$bag->add('error', 'Conta já verificada!');
+
+				return Redirect::to('/')
+					->withErrors($bag);
+			}
+		}
+		catch (Exception $e)
+		{
+
+			$bag = new \Illuminate\Support\MessageBag;
+			$bag->add('error', 'Erro interno: ' . $e->getMessage());
+
+			return Redirect::to('/')
+				->withErrors($bag);
 		}
 	}
 
