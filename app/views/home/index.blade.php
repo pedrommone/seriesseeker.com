@@ -35,6 +35,4 @@
 		'movies' => $next_movies,
 		'episodes' => $next_episodes
 	])
-	
-	@include('partials.create-account-bar')
 @stop
