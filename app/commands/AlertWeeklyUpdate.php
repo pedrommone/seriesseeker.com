@@ -23,7 +23,7 @@ class AlertWeeklyUpdate extends Command {
 					"join show_seasons on show_seasons.show_id = shows.id " .
 					"join season_episodes on season_episodes.show_season_id = show_seasons.id " .
 					"where DATE(season_episodes.air_date) > NOW() " .
-						"and DATE(DATE_ADD(season_episodes.air_date, INTERVAL 7 DAY))" .
+						"and DATE(DATE_ADD(NOW(), INTERVAL 7 DAY)) > DATE(season_episodes.air_date) " .
 						"and users.id = " . $user->id . " " .
 					"order by season_episodes.air_date asc " .
 					"limit 5"
@@ -36,7 +36,7 @@ class AlertWeeklyUpdate extends Command {
 					"join movies on movies.id = movie_user.movie_id " .
 					"where DATE(movies.release_date) > NOW() " .
 						"and users.id = " . $user->id . " " .
-						"and DATE(DATE_ADD(movies.release_date, INTERVAL 7 DAY))" .
+						"and DATE(DATE_ADD(NOW(), INTERVAL 7 DAY)) > DATE(movies.release_date) " .
 					"limit 5"
 			));
 
