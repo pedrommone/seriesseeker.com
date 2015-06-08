@@ -54,6 +54,7 @@ class UsersController extends BaseController {
 	{
 		
 		$validator = Validator::make(Input::all(), [
+			
 			'email' => 'required|max:200|email',
 			'password' => 'required|max:10'
 		]);
@@ -205,7 +206,8 @@ class UsersController extends BaseController {
 				$email_aux = $user->email;
 
 				Mail::send('emails.new-account', [
-					'name' => $user->name,
+
+					'user' => $user,
 					'hash' => (new Hashids())->encode((int) $user->id)
 				], function($message) use ($email_aux) {
 
@@ -270,7 +272,7 @@ class UsersController extends BaseController {
 
 				Mail::send('emails.new-password', [
 
-					'name' => $user->name,
+					'user' => $user,
 					'new_password' => $new_password
 				], function($message) use ($email_aux) {
 
