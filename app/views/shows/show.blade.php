@@ -76,4 +76,6 @@
 		</div>
 		
 	</section>
+
+	@include('partials.global-search')
 @stop
