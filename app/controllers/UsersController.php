@@ -175,7 +175,7 @@ class UsersController extends BaseController {
 		$validator = Validator::make(Input::all(), [
 
 			'name' => 'required|max:100',
-			'email' => 'required|unique:users,email',
+			'email' => 'required|email|unique:users,email',
 			'password' => 'required|max:10',
 			'timezone' => 'required|timezone'
 		]);
