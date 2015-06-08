@@ -15,6 +15,8 @@ class BaseController extends Controller {
 			
 			$this->layout = View::make($this->layout);
 		}
+
+		View::share('last_update', Setting::whereKey('last_update')->first()->value);
 	}
 
 }

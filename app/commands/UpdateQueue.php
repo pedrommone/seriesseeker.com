@@ -89,6 +89,9 @@ class UpdateQueue extends Command {
 
 		$this->sweepMoviesChanges(1, $time);
 		$this->sweepShowsChanges(1, $time);
+
+		Setting::whereKey('last_update')
+			->update(['value' => Carbon::now()]);
 	}
 
 	protected function getArguments()

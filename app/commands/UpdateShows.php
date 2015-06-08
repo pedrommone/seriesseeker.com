@@ -149,5 +149,8 @@ class UpdateShows extends Command {
 
 			sleep(5);			
 		}
+
+		Setting::whereKey('last_update')
+			->update(['value' => Carbon::now()]);
 	}
 }

@@ -90,7 +90,7 @@
 					
 					<div class="col-md-13 text-right">
 
-						Último atualização às {{ date('d/m/y h:s:i') }}						
+						Último atualização às {{ Carbon::parse($last_update)->format('d/m/y h:s:i') }}						
 					</div>
 				</div>
 			</div>

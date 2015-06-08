@@ -28,5 +28,8 @@ class UpdateGenres extends Command {
 		}
 
 		$this->info('Saved ' . count($genres['genres']) . ' genres');
+
+		Setting::whereKey('last_update')
+			->update(['value' => Carbon::now()]);
 	}
 }

@@ -73,5 +73,8 @@ class UpdateMovies extends Command {
 			$change->delete();
 			sleep(1);
 		}
+
+		Setting::whereKey('last_update')
+			->update(['value' => Carbon::now()]);
 	}
 }
