@@ -15,7 +15,8 @@ class ShowsController extends BaseController {
 				->episodes()
 				->lists('id');
 
-			$user_follow = User::with('shows')
+			$user_follow = Auth::user()
+				->with('shows')
 				->whereHas('shows', function($query) use($show) {
 
 					$query->whereId($show->id);
