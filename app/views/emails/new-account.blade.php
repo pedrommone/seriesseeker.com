@@ -1,12 +1,11 @@
-<html>
-	<body>
-		
-		<p>
+@extends('emails.layout.master')
 
-			Olá {{ $name }},<br>
-			<br>
-			Precisamos confirmar seu email, por favor, clique no link abaixo:<br>
-			{{ url('/users/validate/' . $hash) }}
-		</p>
-	</body>
-</html>
+@section('content')
+
+	@include('emails.layout.row-start')
+
+		Precisamos confirmar seu email, por favor, clique no link abaixo:
+		<br>
+		{{ url('/users/validate/' . $hash) }}
+	@include('emails.layout.row-end')
+@stop

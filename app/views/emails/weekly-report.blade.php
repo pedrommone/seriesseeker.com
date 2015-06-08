@@ -1,14 +1,11 @@
-<html>
-	<body>
-		
-		<p>
+@extends('emails.layout.master')
 
-			Olá {{ $user->name }}! :) <br><br>
-			Essa semana você tem as seguintes atrações <br>
-		</p>
+@section('content')
 
-		@if (count($next_movies) > 0)
+	@if (count($next_movies) > 0)
 
+		@include('emails.layout.row-start')
+			
 			<h4>Filmes ({{ count($next_movies) }})</h4>
 
 			<ul>
@@ -23,12 +20,15 @@
 					</li>
 				@endforeach
 			</ul>
-		@endif
+		@include('emails.layout.row-end')
+	@endif
 
-		@if (count($next_episodes) > 0)
+	@if (count($next_episodes) > 0)
 
+		@include('emails.layout.row-start')
+			
 			<h4>Séries ({{ count($next_episodes) }})</h4>
-
+			
 			<ul>
 				@foreach($next_episodes as $episode)
 					
@@ -41,8 +41,6 @@
 					</li>
 				@endforeach
 			</ul>
-		@endif
-
-		<p>Caso não queira mais receber essa notificação, atualize o seu painel.</p>
-	</body>
-</html>
+		@include('emails.layout.row-end')
+	@endif
+@stop

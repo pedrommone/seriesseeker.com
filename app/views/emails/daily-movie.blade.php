@@ -1,15 +1,13 @@
-<html>
-	<body>
-		
-		<p>
+@extends('emails.layout.master')
 
-			Olá {{ $user->name }}! :) <br>
-		</p>
+@section('content')
 
-		@if (count($user->movies) > 0)
+	@if (count($user->movies) > 0)
 
+		@include('emails.layout.row-start')
+			
 			<h4>Filmes que estreiam hoje ({{ count($user->movies) }})</h4>
-
+			
 			<ul>
 				@foreach($user->movies as $movie)
 					
@@ -22,8 +20,6 @@
 					</li>
 				@endforeach
 			</ul>
-		@endif
-
-		<p>Caso não queira mais receber essa notificação, atualize o seu painel.</p>
-	</body>
-</html>
+		@include('emails.layout.row-end')
+	@endif
+@stop

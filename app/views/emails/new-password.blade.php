@@ -1,11 +1,9 @@
-<html>
-	<body>
-		
-		<p>
+@extends('emails.layout.master')
 
-			Olá {{ $name }},<br>
-			<br>
-			Essa é a sua nova senha: <b>{{ $new_password }}</b>
-		</p>
-	</body>
-</html>
+@section('content')
+
+	@include('emails.layout.row-start')
+
+		Essa é a sua nova senha: <b>{{ $new_password }}</b>
+	@include('emails.layout.row-end')
+@stop
