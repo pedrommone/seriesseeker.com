@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'seriesseeker.com',
+	'host' => 'mail.seriesseeker.com',
 
 	/*
 	|--------------------------------------------------------------------------
