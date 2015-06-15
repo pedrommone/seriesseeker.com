@@ -13,6 +13,8 @@ class UpdateMovies extends Command {
 	public function fire()
 	{
 
+		$debug = $this->option('debug');
+
 		// Get the first 20 movies
 		$movie_changes = ItemsToUpdate::where('type', 'M')->get()->take(20);
 
@@ -27,7 +29,8 @@ class UpdateMovies extends Command {
 				
 				$movie = TMDB::getMoviesApi()->getMovie($change->target);
 
-				$this->info("Update movie: " . $movie["original_title"]);
+				if ($debug)
+					$this->info("Update movie: " . $movie["original_title"]);
 
 				$model = Movie::find($movie["id"]);
 
@@ -67,7 +70,8 @@ class UpdateMovies extends Command {
 
 			} catch (Exception $e) {
 
-				$this->error("ID not found: " . $e->getMessage());
+				if ($debug)
+					$this->error("ID not found: " . $e->getMessage());
 			}
 
 			$change->delete();
@@ -76,5 +80,13 @@ class UpdateMovies extends Command {
 
 		Setting::whereKey('last_update')
 			->update(['value' => Carbon::now()]);
+	}
+
+	protected function getOptions()
+	{
+
+		return array(
+			array('debug', 'd', InputOption::VALUE_NONE, 'Show debug', null),
+		);
 	}
 }

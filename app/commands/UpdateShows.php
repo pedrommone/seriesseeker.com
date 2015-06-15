@@ -13,6 +13,8 @@ class UpdateShows extends Command {
 	public function fire()
 	{
 
+		$debug = $this->option('debug');
+
 		// Get the first 20 shows
 		$show_changes = ItemsToUpdate::where('type', 'S')->get()->take(20);
 
@@ -28,7 +30,8 @@ class UpdateShows extends Command {
 				// Get the target of update
 				$show = TMDB::getTvApi()->getTvshow($change->target);
 
-				$this->info("Update show: " . $show["name"]);
+				if ($debug)
+					$this->info("Update show: " . $show["name"]);
 
 				$model = Show::find($show["id"]);
 
@@ -63,7 +66,8 @@ class UpdateShows extends Command {
 
 				$model->genres()->sync($genres);
 
-				$this->info("Updating show: " . $model->name);
+				if ($debug)
+					$this->info("Updating show: " . $model->name);
 
 				try
 				{
@@ -73,7 +77,8 @@ class UpdateShows extends Command {
 					do
 					{
 
-						$this->info("Trying ID: " . ++$season_counter);
+						if ($debug)
+							$this->info("Trying ID: " . ++$season_counter);
 
 						try
 						{
@@ -131,18 +136,21 @@ class UpdateShows extends Command {
 				catch (Tmdb\Exception\TmdbApiException $e)
 				{
 
-					$this->info("ID not found: " . $e->getMessage());
+					if ($debug)
+						$this->info("ID not found: " . $e->getMessage());
 				}
 				catch (Exception $e)
 				{
 
-					$this->error("Error: " . $e->getMessage());
+					if ($debug)
+						$this->error("Error: " . $e->getMessage());
 				}
 
 				sleep(1);
 			} catch (Exception $e) {
 
-				$this->error("ID not found: " . $e->getMessage());
+				if ($debug)
+					$this->error("ID not found: " . $e->getMessage());
 			}
 
 			$change->delete();
@@ -152,5 +160,13 @@ class UpdateShows extends Command {
 
 		Setting::whereKey('last_update')
 			->update(['value' => Carbon::now()]);
+	}
+
+	protected function getOptions()
+	{
+
+		return array(
+			array('debug', 'd', InputOption::VALUE_NONE, 'Show debug', null),
+		);
 	}
 }

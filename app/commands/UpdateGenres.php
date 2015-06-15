@@ -13,6 +13,7 @@ class UpdateGenres extends Command {
 	public function fire()
 	{
 
+		$debug = $this->option('debug');
 		$genres = TMDB::getGenresApi()->getGenres();
 
 		foreach ($genres['genres'] as $genre)
@@ -27,9 +28,18 @@ class UpdateGenres extends Command {
 			}
 		}
 
-		$this->info('Saved ' . count($genres['genres']) . ' genres');
+		if ($debug)
+			$this->info('Saved ' . count($genres['genres']) . ' genres');
 
 		Setting::whereKey('last_update')
 			->update(['value' => Carbon::now()]);
+	}
+
+	protected function getOptions()
+	{
+
+		return array(
+			array('debug', 'd', InputOption::VALUE_NONE, 'Show debug', null),
+		);
 	}
 }
