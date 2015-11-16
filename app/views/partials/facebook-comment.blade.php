@@ -8,5 +8,5 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <section id="facebook-comment" class="container">
-	<div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-width="100%" data-numposts="5"></div>
+	<div class="fb-comments" data-href="{{ Request::url() }}" data-width="100%" data-numposts="5"></div>
 </section>
