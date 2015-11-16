@@ -78,5 +78,5 @@
 	</section>
 
 	@include('partials.global-search')
-	@include('partials.facebook-comments')
+	@include('partials.facebook-comment')
 @stop
